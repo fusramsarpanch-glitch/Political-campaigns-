@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>भाई फुराराम सरपंच - ग्राम पंचायत थाला | Fusram Sarpanch Platform</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Hind & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              saffron: '#FF6B00',
+              saffronLight: '#FFF4EB',
+              saffronDark: '#D95700',
+              navy: '#0B132B',
+              navyLight: '#1C2541',
+              navyCard: '#151F38',
+              emerald: '#10B981',
+              maroon: '#800000'
+            }
+          },
+          fontFamily: {
+            sans: ['Hind', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.05); }
+    }
+    .animate-pulse-live {
+      animation: pulseLive 1.6s infinite ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-saffron selection:text-white">
+
+  <div class="bg-brand-navy text-white text-xs py-2 px-4 border-b border-brand-navyLight">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="bg-brand-saffron text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wide uppercase">
+          आधिकारिक पोर्टल
+        </span>
+        <span class="text-slate-300 font-medium truncate">
+          ग्राम पंचायत थाला (Thala) — सेवा, पारदर्शिता एवं सर्वांगीण विकास
+        </span>
+      </div>
+      <div class="flex items-center gap-3 text-[11px]">
+        <!-- Offline / Online Mode Toggle & Status -->
+        <div class="flex items-center gap-1.5 bg-black/30 px-2 py-0.5 rounded-lg border border-white/10">
+          <span id="syncStatusBadge" class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <i id="syncStatusIcon" class="fa-solid fa-cloud-arrow-up text-[10px]"></i> 
+            <span id="syncStatusText">डाटा सिंक सक्रिय (ऑनलाइन)</span>
+          </span>
+          <button type="button" onclick="toggleSimulatedOfflineMode()" id="offlineModeToggleBtn" class="ml-1 text-[10px] bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold px-1.5 py-0.5 rounded border border-amber-400/30 transition" title="इंटरनेट के बिना ऑफलाइन मोड टेस्ट करें">
+            <i class="fa-solid fa-wifi"></i> <span>टेस्ट ऑफलाइन</span>
+          </button>
+        </div>
+        <button onclick="openPortalAuthModal()" class="text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 transition bg-white/5 px-2.5 py-1 rounded border border-white/10">
+          <i class="fa-solid fa-lock text-xs"></i> स्टाफ / प्रबंधन लॉगिन
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+      <!-- Brand & Sarpanch Identity -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-full border-2 border-brand-saffron overflow-hidden bg-slate-100 flex items-center justify-center shrink-0 shadow">
+          <img id="navAvatarImg" src="" alt="भाई फुराराम सरपंच" class="w-full h-full object-cover object-top" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23FF6B00\'/%3E%3Ccircle cx=\'50\' cy=\'38\' r=\'20\' fill=\'%23FFF\'/%3E%3Cpath d=\'M20,85 C20,62 34,56 50,56 C66,56 80,62 80,85 Z\' fill=\'%23FFF\'/%3E%3C/svg%3E';" />
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-brand-saffron transition flex items-center gap-1.5 leading-tight">
+            <span id="navTitleName">भाई फुराराम सरपंच</span>
+            <span class="text-red-500">❤️</span>
+          </h1>
+          <p class="text-[11px] text-slate-500 font-semibold leading-none mt-0.5">सरपंच — ग्राम पंचायत थाला</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <nav class="hidden lg:flex items-center space-x-5 text-xs font-bold text-slate-700">
+        <a href="#about" class="hover:text-brand-saffron transition">परिचय</a>
+        <a href="#news" class="hover:text-brand-saffron transition">समाचार</a>
+        <a href="#events" class="hover:text-brand-saffron transition">ग्राम सभा व दौरे</a>
+        <a href="#gallery" class="hover:text-brand-saffron transition">फोटो गैलरी</a>
+        <a href="#videos" class="hover:text-brand-saffron transition">वीडियो</a>
+        <a href="#achievements" class="hover:text-brand-saffron transition">विकास कार्य</a>
+        <a href="#contact" class="hover:text-brand-saffron transition">सम्पर्क</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2">
+        <button onclick="openCitizenRegisterModal()" class="inline-flex items-center gap-1.5 bg-brand-saffron hover:bg-brand-saffronDark text-white px-3 sm:px-4 py-2 rounded-xl text-xs font-bold shadow-md shadow-brand-saffron/20 transition">
+          <i class="fa-solid fa-address-card"></i>
+          <span>नागरिक पंजीयन</span>
+        </button>
+
+        <button onclick="toggleLiveChatWidget()" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-amber-400 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-bold shadow transition">
+          <i class="fa-solid fa-comments"></i>
+          <span class="hidden md:inline text-white">कार्यालय संवाद</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="liveStreamBanner" class="hidden bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white py-2.5 px-4 shadow-md sticky top-[61px] z-30">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs sm:text-sm">
+      <div class="flex items-center gap-2.5 truncate">
+        <span class="flex h-3 w-3 relative shrink-0">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+        </span>
+        <span class="font-black uppercase tracking-wider text-[10px] bg-red-900 px-2 py-0.5 rounded">सीधा प्रसारण</span>
+        <span id="liveBannerTitle" class="font-bold truncate">भाई फुराराम सरपंच ग्राम सभा से सीधा लाइव हैं</span>
+      </div>
+      <a id="liveBannerLink" href="https://youtube.com" target="_blank" class="bg-white text-red-700 hover:bg-red-50 px-3 py-1 rounded-lg font-bold text-xs shrink-0 flex items-center gap-1 shadow transition">
+        <i class="fa-brands fa-youtube text-red-600 text-sm"></i> अभी देखें
+      </a>
+    </div>
+  </div>
+
+  <section id="home" class="relative bg-gradient-to-b from-amber-50/60 via-white to-slate-50 pt-8 pb-12 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Left Leader Bio -->
+      <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 bg-brand-saffronLight border border-brand-saffron/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-brand-saffronDark shadow-sm">
+          <i class="fa-solid fa-seedling text-brand-saffron"></i>
+          <span>गाँव का विकास — जन-जन का अटूट विश्वास</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+          जनसेवक <span id="heroLeaderName" class="text-brand-saffron">भाई फुराराम सरपंच</span>
+        </h2>
+        <p class="text-base sm:text-lg font-bold text-slate-700" id="heroLeaderTitle">
+          प्रधान एवं सरपंच — ग्राम पंचायत थाला
+        </p>
+
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0" id="heroLeaderBio">
+          थाला ग्राम पंचायत के समग्र विकास, प्रत्येक ढाणी तक शुद्ध पेयजल, सुदृढ़ सीसी सड़कें, आधुनिक विद्यालय सुविधा, सोलर लाइट और हर किसान-मजदूर साथी के स्वाभिमान हेतु 24 घंटे समर्पित।
+        </p>
+
+        <!-- Social Media Direct Links -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-2">
+          <a id="linkInsta" href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-600 border border-pink-200 flex items-center justify-center text-lg transition shadow-sm" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a id="linkFb" href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 flex items-center justify-center text-lg transition shadow-sm" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a id="linkYt" href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 flex items-center justify-center text-lg transition shadow-sm" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a id="linkWa" href="https://wa.me/919876543210" target="_blank" class="w-10 h-10 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center justify-center text-lg transition shadow-sm" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a id="linkTw" href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-600 border border-sky-200 flex items-center justify-center text-lg transition shadow-sm" title="Twitter / X">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+          <a href="#events" class="bg-brand-saffron hover:bg-brand-saffronDark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-lg shadow-brand-saffron/25 transition flex items-center gap-2">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>आगामी ग्राम सभा व कार्यक्रम</span>
+          </a>
+          <button onclick="openCitizenRegisterModal()" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-user-plus text-brand-saffron"></i>
+            <span>नागरिक परिवार से जुड़ें</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-sm">
+          <div class="relative bg-white rounded-3xl p-3 shadow-2xl border-4 border-amber-200 overflow-hidden group">
+            
+            <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 relative">
+              <img id="mainLeaderPhoto" src="" alt="भाई फुराराम सरपंच" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'%3E%3Cdefs%3E%3ClinearGradient id=\'bgGrad\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23FF9933\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23FF6B00\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'400\' height=\'500\' fill=\'url(%23bgGrad)\'/%3E%3Ccircle cx=\'200\' cy=\'190\' r=\'85\' fill=\'%23FFFFFF\' opacity=\'0.9\'/%3E%3Cpath d=\'M100,450 C100,340 150,300 200,300 C250,300 300,340 300,450 Z\' fill=\'%23FFFFFF\' opacity=\'0.95\'/%3E%3Ctext x=\'200\' y=\'470\' font-size=\'22\' font-weight=\'bold\' fill=\'%230B132B\' text-anchor=\'middle\' font-family=\'sans-serif\'%3E%E0%A4%AD%E0%A4%BE%E0%A4%88%20%E0%A4%AB%E0%A4%B0%E0%A4%BE%E0%A4%B0%E0%A4%BE%E0%A4%AE%20%E0%A4%B8%E0%A4%B0%E0%A4%AA%E0%A4%82%E0%A4%9A%3C/text%3E%3C/svg%3E';" />
+              
+              <!-- Bottom Heart Badge (Strictly matching user photo) -->
+              <div class="absolute bottom-3 inset-x-3 bg-white/95 backdrop-blur-md rounded-2xl py-2 px-4 text-center shadow-lg border border-slate-100 flex items-center justify-center gap-2">
+                <span class="text-base sm:text-lg font-bold text-slate-900 tracking-wide">भाई फुराराम सरपंच</span>
+                <span class="text-red-500 text-xl leading-none">❤️</span>
+              </div>
+            </div>
+
+            <div class="mt-2.5 text-center">
+              <span class="text-xs font-bold text-slate-700 block">ग्राम पंचायत थाला • जनसेवा ही संकल्प</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-brand-navy text-white py-3 border-y border-brand-navyLight shadow-inner overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 flex items-center gap-3">
+      <span class="bg-brand-saffron text-white text-[11px] uppercase px-2.5 py-1 rounded font-black tracking-wider shrink-0 flex items-center gap-1.5 shadow-sm">
+        <i class="fa-solid fa-bullhorn"></i> ताज़ा सूचनाएं
+      </span>
+      <div class="overflow-x-auto whitespace-nowrap text-xs text-slate-300 flex items-center gap-8 scrollbar-none" id="newsTicker">
+        <span>थाला ग्राम पंचायत की ताज़ा विकास योजनाओं और सूचनाओं का सीधा प्रसारण लोड हो रहा है...</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-16 w-full">
+
+    <!-- About Fusram Sarpanch Section -->
+    <section id="about" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="max-w-3xl space-y-3">
+        <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">गाँव और जनसेवा</span>
+        <h3 class="text-2xl font-extrabold text-slate-900">भाई फुराराम सरपंच का जन-संकल्प</h3>
+        <p class="text-slate-600 text-sm leading-relaxed" id="aboutLongBio">
+          थाला ग्राम पंचायत के प्रत्येक नागरिक को समर्पित यह मंच सीधा संवाद और पारदर्शी शासन सुनिश्चित करने हेतु बनाया गया है। कृषि सशक्तिकरण, ढाणियों में पक्की सड़क, पेयजल टंकी परियोजनाएं और युवाओं हेतु खेल मैदान व शिक्षण संस्थान की सुविधाओं को प्राथमिकता के साथ धरातल पर उतारा जा रहा है।
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-100 text-center">
+        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100">
+          <p class="text-xl sm:text-2xl font-black text-brand-saffron">24/7</p>
+          <span class="text-[11px] font-semibold text-slate-600">जनता सेवा उपलब्ध</span>
+        </div>
+        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100">
+          <p class="text-xl sm:text-2xl font-black text-brand-saffron">100%</p>
+          <span class="text-[11px] font-semibold text-slate-600">पारदर्शी विकास</span>
+        </div>
+        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100">
+          <p class="text-xl sm:text-2xl font-black text-brand-saffron">थाला</p>
+          <span class="text-[11px] font-semibold text-slate-600">समग्र ग्राम उत्थान</span>
+        </div>
+        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100">
+          <p class="text-xl sm:text-2xl font-black text-brand-saffron">सीधा</p>
+          <span class="text-[11px] font-semibold text-slate-600">मोबाइल संवाद</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section id="news" class="space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">थाला ग्राम समाचार</span>
+          <h3 class="text-2xl font-extrabold text-slate-900">विकास एवं प्रेस विज्ञप्ति</h3>
+        </div>
+      </div>
+      <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamically rendered news cards -->
+      </div>
+    </section>
+
+    <!-- Upcoming Events & Jan Sabha -->
+    <section id="events" class="space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">सार्वजनिक कार्यक्रम</span>
+          <h3 class="text-2xl font-extrabold text-slate-900">आगामी ग्राम सभा व जनसुनवाई</h3>
+        </div>
+      </div>
+      <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Dynamically rendered events -->
+      </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">क्षेत्र भ्रमण एवं जनसंपर्क</span>
+          <h3 class="text-2xl font-extrabold text-slate-900">फोटो गैलरी</h3>
+        </div>
+      </div>
+      <div id="photosGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <!-- Dynamically rendered photos -->
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">भाषण व सीधे वीडियो</span>
+          <h3 class="text-2xl font-extrabold text-slate-900">वीडियो गैलरी</h3>
+        </div>
+      </div>
+      <div id="videosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamically rendered videos -->
+      </div>
+    </section>
+
+    <!-- Village Achievements -->
+    <section id="achievements" class="space-y-6">
+      <div>
+        <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">विकास रिपोर्ट कार्ड</span>
+        <h3 class="text-2xl font-extrabold text-slate-900">थाला ग्राम पंचायत के प्रमुख कार्य</h3>
+      </div>
+      <div id="achievementsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Dynamically rendered achievements -->
+      </div>
+    </section>
+
+    <!-- Connect & Citizen Direct Contact Section -->
+    <section id="contact" class="bg-gradient-to-br from-slate-900 to-brand-navy text-white rounded-3xl p-6 sm:p-10 shadow-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">सम्पर्क कार्यालय</span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold">सरपंच कार्यालय, थाला</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            गाँव की किसी भी समस्या, सुझाव या विकास कार्य के लिए सीधे सम्पर्क करें। आपका हर सुझाव थाला को अग्रणी बनाने में बहुमूल्य है।
+          </p>
+
+          <div class="space-y-3 pt-2 text-xs sm:text-sm">
+            <div class="flex items-center gap-3 text-slate-200">
+              <i class="fa-solid fa-location-dot text-brand-saffron text-base w-5"></i>
+              <span>ग्राम पंचायत भवन थाला, मुख्य बस स्टैंड के पास</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-200">
+              <i class="fa-solid fa-phone text-brand-saffron text-base w-5"></i>
+              <span>कार्यालय दूरभाष: +91 98765 43210</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-200">
+              <i class="fa-solid fa-envelope text-brand-saffron text-base w-5"></i>
+              <span>sarpanch.thala@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Citizen Message Form -->
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 space-y-3 text-xs">
+          <h4 class="text-sm font-bold text-white flex items-center gap-1.5">
+            <i class="fa-solid fa-paper-plane text-brand-saffron"></i>
+            <span>त्वरित संदेश भेजें (Direct Citizen Message)</span>
+          </h4>
+          <form onsubmit="handlePublicContactSubmit(event)" class="space-y-3">
+            <div>
+              <input type="text" id="contactNameInput" required placeholder="आपका पूरा नाम *" class="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-saffron" />
+            </div>
+            <div>
+              <input type="tel" id="contactPhoneInput" required placeholder="मोबाइल नंबर *" class="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-saffron" />
+            </div>
+            <div>
+              <textarea id="contactMessageInput" required rows="3" placeholder="आपकी समस्या, मांग अथवा विचार..." class="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-saffron"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold py-2.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>कार्यालय को प्रेषित करें</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+      <p class="font-bold text-slate-200">भाई फुराराम सरपंच — ग्राम पंचायत थाला</p>
+      <p class="text-slate-500 text-[11px]">समस्त अधिकार सुरक्षित • जनसेवा एवं ग्राम उत्थान मंच</p>
+    </div>
+  </footer>
+
+  <div id="liveChatWidget" class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
+    <!-- Chat Window Box -->
+    <div id="chatBoxWindow" class="hidden w-[92vw] sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col mb-3 transition-all duration-300" style="max-height: 520px; height: 500px;">
+      <!-- Header -->
+      <div class="bg-slate-900 text-white p-3.5 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-brand-saffron flex items-center justify-center text-white font-bold text-xs shadow-inner">
+            थाला
+          </div>
+          <div>
+            <h4 class="text-xs font-bold leading-tight">कार्यालय जनसंवाद (Direct Chat)</h4>
+            <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              स्टाफ डेस्क लाइव
+            </span>
+          </div>
+        </div>
+        <button onclick="toggleLiveChatWidget()" class="text-slate-400 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Messages Stream -->
+      <div id="chatMessagesContainer" class="flex-1 overflow-y-auto p-3 space-y-2.5 text-xs bg-slate-50">
+        <!-- Chat bubbles rendered dynamically -->
+      </div>
+
+      <!-- Input and Attachments Toolbar -->
+      <div class="p-2.5 bg-white border-t border-slate-200 shrink-0 space-y-2">
+        <!-- Preview of attachment -->
+        <div id="chatAttachmentPreview" class="hidden text-[11px] bg-amber-50 p-1.5 rounded border border-amber-200 text-amber-900 flex items-center justify-between">
+          <span id="chatAttachmentText" class="truncate font-semibold">File attached</span>
+          <button type="button" onclick="clearChatAttachment()" class="text-red-500 font-bold ml-2">✕</button>
+        </div>
+
+        <form onsubmit="handleCitizenSendMessage(event)" class="flex items-center gap-2">
+          <!-- Attachment buttons -->
+          <label class="cursor-pointer text-slate-500 hover:text-brand-saffron p-1.5" title="फोटो संलग्न करें">
+            <i class="fa-solid fa-paperclip text-sm"></i>
+            <input type="file" id="chatFileInput" accept="image/*" class="hidden" onchange="handleChatFileUpload(event)" />
+          </label>
+          
+          <button type="button" onclick="shareUserLocation()" class="text-slate-500 hover:text-brand-saffron p-1.5" title="लाइव GPS लोकेशन भेजें">
+            <i class="fa-solid fa-location-crosshairs text-sm"></i>
+          </button>
+
+          <input type="text" id="chatInputMessage" placeholder="अपनी समस्या या संदेश लिखें..." class="flex-1 bg-slate-100 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-saffron" />
+
+          <button type="submit" class="bg-brand-saffron hover:bg-brand-saffronDark text-white p-2 rounded-xl text-xs font-bold transition shadow">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Floating Chat Trigger Button -->
+    <button onclick="toggleLiveChatWidget()" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold p-3 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center gap-2 transition hover:scale-105">
+      <i class="fa-solid fa-comments text-lg sm:text-base"></i>
+      <span class="hidden sm:inline text-xs">सरपंच कार्यालय संवाद</span>
+    </button>
+  </div>
+
+  <div id="adminCMSOverlay" class="fixed inset-0 z-50 bg-slate-950 text-slate-100 hidden flex flex-col">
+    <!-- Topbar -->
+    <header class="bg-slate-900 border-b border-slate-800 p-3.5 flex items-center justify-between shrink-0">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-saffron flex items-center justify-center text-white font-black text-xs shadow">
+          CMS
+        </div>
+        <div>
+          <h2 class="text-xs sm:text-sm font-bold flex items-center gap-1.5">
+            <span>थाला मोबाइल सीएमएस</span>
+            <span id="currentRoleBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] px-2 py-0.5 rounded-full font-bold">
+              Super Admin
+            </span>
+          </h2>
+          <p class="text-[10px] text-slate-400">सुरक्षित मोबाइल नियंत्रण कक्ष (Automatic Real-Time Sync)</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="exitAdminPortal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span class="hidden sm:inline">लॉगआउट</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sub-Navigation Tabs (Horizontally scrollable for all mobile devices) -->
+    <nav id="cmsTabsBar" class="bg-slate-900/70 border-b border-slate-800 px-3 flex items-center gap-1.5 overflow-x-auto scrollbar-none shrink-0 text-xs py-2">
+      <!-- Injected dynamically based on role -->
+    </nav>
+
+    <!-- Admin Work Desk -->
+    <div id="cmsContentArea" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 max-w-5xl mx-auto w-full">
+      <!-- Rendered dynamically -->
+    </div>
+  </div>
+
+  <div id="globalModalContainer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-200">
+      <div class="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between">
+        <h3 id="modalTitle" class="text-xs sm:text-sm font-bold">Modal Title</h3>
+        <button onclick="closeGlobalModal()" class="text-slate-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="modalBody" class="p-5 text-slate-800 text-xs sm:text-sm space-y-4 max-h-[80vh] overflow-y-auto">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-2xl shadow-2xl text-xs font-semibold hidden items-center gap-2 border border-slate-700">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toastMessage">Success</span>
+  </div>
+
+  <script>
+    // Permanent high-fidelity SVG portrait of Fusram Sarpanch matching the uploaded photo
+    window.DEFAULT_SARPANCH_PHOTO = `data:image/svg+xml;utf8,${encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 625" width="100%" height="100%">
+        <defs>
+          <linearGradient id="curtainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E8A838" />
+            <stop offset="25%" stop-color="#D97A24" />
+            <stop offset="55%" stop-color="#E5C786" />
+            <stop offset="78%" stop-color="#CA8632" />
+            <stop offset="100%" stop-color="#552B07" />
+          </linearGradient>
+          <radialGradient id="faceGrad" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="#D5976B" />
+            <stop offset="65%" stop-color="#BE7E52" />
+            <stop offset="100%" stop-color="#9C5E35" />
+          </radialGradient>
+          <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.25"/>
+          </filter>
+        </defs>
+
+        <!-- Background Wedding/Festive Drapes -->
+        <rect width="500" height="625" fill="url(#curtainGrad)"/>
+        <!-- Drape pleats -->
+        <path d="M0,0 Q120,200 80,625 L40,625 Q80,200 0,0 Z" fill="#F3DEAF" opacity="0.35"/>
+        <path d="M120,0 Q240,250 200,625 L160,625 Q200,250 120,0 Z" fill="#F3DEAF" opacity="0.28"/>
+        <path d="M260,0 Q380,250 360,625 L320,625 Q340,250 260,0 Z" fill="#F3DEAF" opacity="0.32"/>
+        <path d="M380,0 Q480,200 460,625 L430,625 Q450,200 380,0 Z" fill="#F3DEAF" opacity="0.3"/>
+
+        <!-- Torso & White Kurta -->
+        <path d="M60,625 L80,360 Q180,310 250,320 Q320,310 420,360 L440,625 Z" fill="#F8FAFC" />
+        <path d="M190,325 L250,440 L310,325 Z" fill="#E2E8F0" />
+        <path d="M248,340 L248,580" stroke="#CBD5E1" stroke-width="2.5" />
+        
+        <!-- Gold Chain -->
+        <path d="M205,340 Q250,395 295,340" fill="none" stroke="#F59E0B" stroke-width="4.5" stroke-linecap="round"/>
+
+        <!-- Neck -->
+        <path d="M210,250 L210,335 Q250,360 290,335 L290,250 Z" fill="#BA794E" />
+
+        <!-- Head / Face -->
+        <ellipse cx="250" cy="225" rx="72" ry="88" fill="url(#faceGrad)" />
+
+        <!-- Black Hair -->
+        <path d="M175,200 C165,115 220,95 250,95 C295,95 335,115 325,200 C310,140 280,130 250,130 C215,130 190,145 175,200 Z" fill="#171717" />
+
+        <!-- Eyebrows -->
+        <path d="M190,192 Q215,182 232,192" fill="none" stroke="#171717" stroke-width="5" stroke-linecap="round"/>
+        <path d="M268,192 Q285,182 310,192" fill="none" stroke="#171717" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Eyes -->
+        <ellipse cx="212" cy="204" rx="10" ry="6" fill="#FFFFFF"/>
+        <circle cx="213" cy="204" r="4.5" fill="#1E293B"/>
+        <ellipse cx="288" cy="204" rx="10" ry="6" fill="#FFFFFF"/>
+        <circle cx="287" cy="204" r="4.5" fill="#1E293B"/>
+
+        <!-- Red Tilak on Forehead -->
+        <path d="M246,160 Q250,150 254,160 L253,178 Q250,182 247,178 Z" fill="#DC2626" />
+        <circle cx="250" cy="182" r="2.5" fill="#FDE047" />
+
+        <!-- Nose -->
+        <path d="M248,198 L244,232 Q250,238 256,232 Z" fill="#A8663C" opacity="0.6"/>
+
+        <!-- Mustache & Friendly Beard -->
+        <path d="M205,245 Q250,238 295,245 Q275,268 250,266 Q225,268 205,245 Z" fill="#171717" />
+        <path d="M226,252 Q250,266 274,252 Q250,260 226,252 Z" fill="#FFFFFF" /> <!-- White Smile Teeth -->
+        <!-- Beard along jawline -->
+        <path d="M185,225 Q180,285 240,305 Q250,307 260,305 Q320,285 315,225 Q305,290 250,296 Q195,290 185,225 Z" fill="#171717" />
+
+        <!-- White Scarf / Dupatta with Green Border -->
+        <path d="M125,360 C120,440 135,540 145,625 L210,625 C200,530 180,430 170,360 Z" fill="#FFFFFF" stroke="#E2E8F0"/>
+        <!-- Green Accent Lines on Scarf -->
+        <path d="M145,360 L160,625" stroke="#059669" stroke-width="4.5"/>
+        <path d="M195,360 L205,625" stroke="#059669" stroke-width="3"/>
+
+        <path d="M330,360 C325,440 335,530 350,625 L405,625 C395,530 375,430 365,360 Z" fill="#FFFFFF" stroke="#E2E8F0"/>
+        <path d="M345,360 L360,625" stroke="#059669" stroke-width="4.5"/>
+
+        <!-- Bottom Name Plaque matching photo -->
+        <g transform="translate(45, 535)" filter="url(#cardShadow)">
+          <rect width="410" height="72" rx="16" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="1.5"/>
+          <text x="180" y="47" font-family="'Hind', 'Inter', sans-serif" font-size="31" font-weight="800" fill="#0F172A" text-anchor="middle">भाई फुराराम सरपंच</text>
+          <!-- Red Heart Icon -->
+          <g transform="translate(325, 18)">
+            <path d="M18,6.8 C18,3 15,0 11.2,0 C8.8,0 6.6,1.4 5.6,3.4 C4.6,1.4 2.4,0 0,0 C-3.8,0 -6.8,3 -6.8,6.8 C-6.8,12.8 5.6,21.5 5.6,21.5 C5.6,21.5 18,12.8 18,6.8 Z" fill="#EF4444" transform="scale(1.4) translate(7, 3)" />
+          </g>
+        </g>
+      </svg>
+    `)}`;
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Global application state
+    window.isSimulatedOffline = false;
+    const LOCAL_STORAGE_KEY = 'thala_sarpanch_app_state_v3';
+
+    window.appState = {
+      activeRole: null, // 'SUPER_ADMIN' | 'EDITOR' | null
+      activeTab: 'overview',
+      lastUpdated: 1773280000000,
+      
+      // Passwords
+      passwords: {
+        SUPER_ADMIN: "@fusram sarpanch",
+        EDITOR: "team edit"
+      },
+
+      profile: {
+        name: "भाई फुराराम सरपंच",
+        hindiName: "भाई फुराराम सरपंच ❤️",
+        designation: "प्रधान एवं सरपंच",
+        constituency: "ग्राम पंचायत थाला (Thala)",
+        bio: "थाला ग्राम पंचायत के समग्र विकास, प्रत्येक ढाणी तक शुद्ध पेयजल, सुदृढ़ सीसी सड़कें, आधुनिक विद्यालय सुविधा, सोलर लाइट और हर किसान-मजदूर साथी के स्वाभिमान हेतु 24 घंटे समर्पित।",
+        longBio: "थाला ग्राम पंचायत के प्रत्येक नागरिक को समर्पित यह मंच सीधा संवाद और पारदर्शी शासन सुनिश्चित करने हेतु बनाया गया है। कृषि सशक्तिकरण, ढाणियों में पक्की सड़क, पेयजल टंकी परियोजनाएं और युवाओं हेतु खेल मैदान व शिक्षण संस्थान की सुविधाओं को प्राथमिकता के साथ धरातल पर उतारा जा रहा है।",
+        photoUrl: window.DEFAULT_SARPANCH_PHOTO,
+        instagram: "https://instagram.com",
+        facebook: "https://facebook.com",
+        youtube: "https://youtube.com",
+        twitter: "https://twitter.com",
+        whatsapp: "919876543210"
+      },
+
+      liveBroadcast: {
+        isLive: false,
+        title: "भाई फुराराम सरपंच ग्राम सभा से सीधा लाइव प्रसारण",
+        url: "https://youtube.com"
+      },
+
+      news: [
+        {
+          id: "n1",
+          title: "थाला में ₹1.25 करोड़ की नई पेयजल पाइपलाइन स्वीकृत",
+          date: "11 Sep 2026",
+          category: "विकास कार्य",
+          description: "सरपंच भाई फुराराम जी के विशेष प्रयासों से थाला ग्राम पंचायत की प्रत्येक ढाणी तक स्वच्छ पेयजल पहुंचाने के कार्य का शिलान्यास किया गया।",
+          status: "Published"
+        },
+        {
+          id: "n2",
+          title: "किसानों हेतु विशेष निःशुल्क बीज व उर्वरक वितरण शिविर",
+          date: "08 Sep 2026",
+          category: "कृषक कल्याण",
+          description: "आगामी रबी सत्र के लिए ग्राम पंचायत प्रांगण में कृषि विशेषज्ञों द्वारा उन्नत तकनीकों व अनुदानित बीजों का वितरण सम्पन्न।",
+          status: "Published"
+        }
+      ],
+
+      events: [
+        {
+          id: "e1",
+          title: "विशेष ग्राम सभा एवं जनसुनवाई बैठक",
+          date: "14 Sep 2026",
+          time: "प्रातः 10:00 बजे",
+          location: "ग्राम पंचायत भवन थाला",
+          description: "समस्त ग्रामवासियों से निवेदन है कि अपने वार्ड की समस्याओं एवं नवीन प्रस्तावों हेतु सपरिवार पधारें।"
+        },
+        {
+          id: "e2",
+          title: "थाला ग्रामीण युवा खेलकूद व स्वास्थ्य शिविर",
+          date: "18 Sep 2026",
+          time: "दोपहर 02:00 बजे",
+          location: "राजकीय उच्च माध्यमिक विद्यालय खेल मैदान",
+          description: "युवाओं हेतु खेल सामग्री वितरण व निःशुल्क नेत्र एवं स्वास्थ्य जांच शिविर।"
+        }
+      ],
+
+      photos: [
+        {
+          id: "p1",
+          album: "विकास कार्य",
+          title: "थाला मुख्य मार्ग सीसी सड़क निर्माण निरीक्षण",
+          url: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=600&auto=format&fit=crop&q=80",
+          date: "09 Sep 2026"
+        },
+        {
+          id: "p2",
+          album: "जनसम्पर्क",
+          title: "ढाणी-ढाणी जनसम्पर्क एवं बुजुर्गों का आशीर्वाद",
+          url: "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600&auto=format&fit=crop&q=80",
+          date: "07 Sep 2026"
+        }
+      ],
+
+      videos: [
+        {
+          id: "v1",
+          title: "थाला ग्राम विकास एवं आगामी 5 वर्षों का विजन भाषण",
+          url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          date: "05 Sep 2026"
+        }
+      ],
+
+      achievements: [
+        {
+          id: "a1",
+          title: "100% शुद्ध पेयजल ढाणी विस्तार",
+          desc: "थाला के प्रत्येक घर तक नल कनेक्शन एवं सोलर ट्यूबवेल व्यवस्था।"
+        },
+        {
+          id: "a2",
+          title: "18+ किमी पक्की सीसी सड़कें",
+          desc: "खेत-खलिहान और ढाणियों को मुख्य डामर रोड से जोड़ने का कार्य।"
+        },
+        {
+          id: "a3",
+          title: "200+ सोलर स्ट्रीट लाइट्स",
+          desc: "थाला के समस्त चौराहों और सार्वजनिक स्थलों पर रोशन रोशनी।"
+        }
+      ],
+
+      prPosts: [
+        {
+          id: "pr1",
+          title: "थाला विकास कार्य प्रेस विज्ञप्ति",
+          channels: ["YouTube", "Facebook", "Instagram"],
+          status: "Published",
+          date: "10 Sep 2026",
+          author: "team edit"
+        }
+      ],
+
+      visitors: [
+        {
+          id: "vis-1",
+          name: "रामेश्वर जी चौधरी",
+          phone: "9829012345",
+          ward: "वार्ड नं. 3, थाला",
+          category: "किसान",
+          message: "नल का दबाव कम है, कृपया निरीक्षण करवाएं।",
+          timestamp: "11 Sep 2026, 09:15 AM",
+          status: "Pending"
+        }
+      ],
+
+      chatMessages: [
+        {
+          id: "c1",
+          sender: "office",
+          senderName: "कार्यालय भाई फुराराम सरपंच",
+          text: "राम-राम सा! भाई फुराराम सरपंच कार्यालय थाला में आपका स्वागत है। अपनी समस्या अथवा सुझाव साझा करें।",
+          time: "10:00 AM",
+          attachment: null
+        }
+      ],
+
+      activeChatAttachment: null
+    };
+
+    // 1. Safe localStorage Engine
+    function saveToLocalStorage(state) {
+      try {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
+        return true;
+      } catch (e) {
+        console.warn("LocalStorage save exception (handled):", e);
+        return false;
+      }
+    }
+
+    function loadFromLocalStorage() {
+      try {
+        const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {
+        console.warn("LocalStorage read exception (handled):", e);
+      }
+      return null;
+    }
+
+    // 2. IndexedDB Storage Engine (unlimited local capacity)
+    const DB_NAME = 'ThalaSarpanchDB_v3';
+    const DB_VERSION = 2;
+    const STORE_NAME = 'app_state';
+
+    function openIndexedDB() {
+      return new Promise((resolve) => {
+        if (!window.indexedDB) {
+          resolve(null);
+          return;
+        }
+        try {
+          const req = indexedDB.open(DB_NAME, DB_VERSION);
+          req.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+              db.createObjectStore(STORE_NAME);
+            }
+          };
+          req.onsuccess = (e) => resolve(e.target.result);
+          req.onerror = () => resolve(null);
+        } catch (err) {
+          resolve(null);
+        }
+      });
+    }
+
+    async function loadFromIndexedDB() {
+      const db = await openIndexedDB();
+      if (!db) return null;
+      return new Promise((resolve) => {
+        try {
+          const tx = db.transaction(STORE_NAME, 'readonly');
+          const store = tx.objectStore(STORE_NAME);
+          const req = store.get('root_state');
+          req.onsuccess = () => resolve(req.result || null);
+          req.onerror = () => resolve(null);
+        } catch (e) {
+          resolve(null);
+        }
+      });
+    }
+
+    async function saveToIndexedDB(stateData) {
+      const db = await openIndexedDB();
+      if (!db) return;
+      try {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        const store = tx.objectStore(STORE_NAME);
+        store.put(stateData, 'root_state');
+      } catch (e) {
+        console.warn("IndexedDB write error (handled):", e);
+      }
+    }
+
+    // Toggle Simulated Offline Mode
+    window.toggleSimulatedOfflineMode = function() {
+      window.isSimulatedOffline = !window.isSimulatedOffline;
+      const toggleBtn = document.getElementById('offlineModeToggleBtn');
+      if (window.isSimulatedOffline) {
+        toggleBtn.innerHTML = '<i class="fa-solid fa-plane"></i> <span>वापस ऑनलाइन आएं</span>';
+        toggleBtn.className = "ml-1 text-[10px] bg-rose-700 hover:bg-rose-600 text-white font-bold px-1.5 py-0.5 rounded border border-rose-400 transition";
+        updateNetworkStatus();
+        window.showToast('ऑफलाइन मोड सक्रिय! अब सभी बदलाव लोकल डेटाबेस में सुरक्षित होंगे।', 'error');
+      } else {
+        toggleBtn.innerHTML = '<i class="fa-solid fa-wifi"></i> <span>टेस्ट ऑफलाइन</span>';
+        toggleBtn.className = "ml-1 text-[10px] bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold px-1.5 py-0.5 rounded border border-amber-400/30 transition";
+        updateNetworkStatus();
+        window.showToast('ऑनलाइन मोड सक्रिय! क्लाउड सिंक किया जा रहा है...');
+        window.saveStateAcrossSession();
+      }
+    };
+
+    let firestoreDb = null;
+    let authObj = null;
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'thala-fusram-sarpanch';
+
+    function applyStateDelta(data) {
+      if (!data) return;
+      // Timestamp resolution: prevent older cloud/offline data from overwriting newer local edits
+      if (data.lastUpdated && window.appState.lastUpdated && data.lastUpdated < window.appState.lastUpdated) {
+        console.log("Local state is newer than incoming state. Preserving local edits.");
+        return;
+      }
+      if (data.lastUpdated) window.appState.lastUpdated = data.lastUpdated;
+
+      if (data.profile) {
+        window.appState.profile = { 
+          ...window.appState.profile, 
+          ...data.profile,
+          photoUrl: (data.profile.photoUrl && data.profile.photoUrl.trim() !== '') 
+            ? data.profile.photoUrl 
+            : window.DEFAULT_SARPANCH_PHOTO
+        };
+      }
+      if (data.news && Array.isArray(data.news)) window.appState.news = data.news;
+      if (data.events && Array.isArray(data.events)) window.appState.events = data.events;
+      if (data.photos && Array.isArray(data.photos)) window.appState.photos = data.photos;
+      if (data.videos && Array.isArray(data.videos)) window.appState.videos = data.videos;
+      if (data.visitors && Array.isArray(data.visitors)) window.appState.visitors = data.visitors;
+      if (data.chatMessages && Array.isArray(data.chatMessages)) window.appState.chatMessages = data.chatMessages;
+      if (data.liveBroadcast) window.appState.liveBroadcast = { ...window.appState.liveBroadcast, ...data.liveBroadcast };
+      if (data.prPosts && Array.isArray(data.prPosts)) window.appState.prPosts = data.prPosts;
+    }
+
+    async function initPersistentData() {
+      // Step 1: Instant load from localStorage
+      const localLS = loadFromLocalStorage();
+      if (localLS) {
+        applyStateDelta(localLS);
+      }
+
+      // Step 2: Load from IndexedDB (may have higher capacity/photos)
+      const localIDB = await loadFromIndexedDB();
+      if (localIDB) {
+        applyStateDelta(localIDB);
+      }
+
+      // Initial render immediately so user never waits
+      window.renderPublicSite();
+      window.renderChatMessages();
+      updateSyncBadge('डेटाबेस सुरक्षित (लोकल + ऑफलाइन)');
+
+      // Step 3: Cloud synchronization
+      try {
+        if (!window.isSimulatedOffline && navigator.onLine && typeof __firebase_config !== 'undefined') {
+          const firebaseConfig = JSON.parse(__firebase_config);
+          const app = initializeApp(firebaseConfig);
+          firestoreDb = getFirestore(app);
+          authObj = getAuth(app);
+
+          let user = null;
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            const userCred = await signInWithCustomToken(authObj, __initial_auth_token);
+            user = userCred.user;
+          } else {
+            const userCred = await signInAnonymously(authObj);
+            user = userCred.user;
+          }
+
+          if (user) {
+            const stateDocRef = doc(firestoreDb, 'artifacts', appId, 'public', 'data', 'campaign', 'state');
+            onSnapshot(stateDocRef, (snap) => {
+              if (snap.exists() && !window.isSimulatedOffline) {
+                const cloudData = snap.data();
+                if (cloudData.lastUpdated && cloudData.lastUpdated >= window.appState.lastUpdated) {
+                  applyStateDelta(cloudData);
+                  saveToLocalStorage(cloudData);
+                  saveToIndexedDB(cloudData);
+                  window.renderPublicSite();
+                  if (window.appState.activeRole) {
+                    window.switchAdminTab(window.appState.activeTab);
+                  }
+                  updateSyncBadge('क्लाउड व लोकल सिंक सक्रिय');
+                } else if (window.appState.lastUpdated > (cloudData.lastUpdated || 0)) {
+                  // Local is newer, push to cloud
+                  window.saveStateAcrossSession();
+                }
+              }
+            }, (err) => {
+              console.warn("Firestore snapshot notice:", err);
+              updateSyncBadge('ऑफलाइन डेटाबेस सुरक्षित');
+            });
+          }
+        }
+      } catch (err) {
+        console.warn("Cloud connection fallback:", err);
+        updateSyncBadge('ऑफलाइन डेटाबेस सुरक्षित');
+      }
+    }
+
+    function updateSyncBadge(text) {
+      const el = document.getElementById('syncStatusText');
+      if (el) el.innerText = text;
+    }
+
+    function updateNetworkStatus() {
+      const badge = document.getElementById('syncStatusBadge');
+      const icon = document.getElementById('syncStatusIcon');
+      const text = document.getElementById('syncStatusText');
+      
+      const isActuallyOffline = window.isSimulatedOffline || !navigator.onLine;
+
+      if (isActuallyOffline) {
+        if (badge) badge.className = "inline-flex items-center gap-1.5 text-amber-300 font-bold";
+        if (icon) icon.className = "fa-solid fa-database text-[10px] text-amber-400";
+        if (text) text.innerText = "ऑफलाइन डेटाबेस सुरक्षित (IndexedDB + Storage)";
+      } else {
+        if (badge) badge.className = "inline-flex items-center gap-1.5 text-emerald-400 font-bold";
+        if (icon) icon.className = "fa-solid fa-cloud-arrow-up text-[10px] text-emerald-400";
+        if (text) text.innerText = "डेटा सुरक्षित (ऑनलाइन + ऑफलाइन)";
+      }
+    }
+
+    window.addEventListener('online', async () => {
+      if (!window.isSimulatedOffline) {
+        updateNetworkStatus();
+        window.showToast('इंटरनेट पुनः कनेक्ट हो गया! डेटा क्लाउड पर सिंक हो रहा है...');
+        await window.saveStateAcrossSession();
+      }
+    });
+
+    window.addEventListener('offline', () => {
+      updateNetworkStatus();
+      window.showToast('ऑफलाइन मोड: सारा डेटा डिवाइस के अंदर 100% सुरक्षित है!', 'error');
+    });
+
+    window.saveStateAcrossSession = async function() {
+      window.appState.lastUpdated = Date.now();
+
+      const payload = {
+        profile: window.appState.profile,
+        news: window.appState.news,
+        events: window.appState.events,
+        photos: window.appState.photos,
+        videos: window.appState.videos,
+        visitors: window.appState.visitors,
+        chatMessages: window.appState.chatMessages,
+        liveBroadcast: window.appState.liveBroadcast,
+        prPosts: window.appState.prPosts,
+        lastUpdated: window.appState.lastUpdated
+      };
+
+      // 1. Save to localStorage instantly
+      saveToLocalStorage(payload);
+
+      // 2. Save to IndexedDB (asynchronous unlimited capacity)
+      await saveToIndexedDB(payload);
+
+      // 3. Save to Firestore if online and authenticated
+      const isActuallyOffline = window.isSimulatedOffline || !navigator.onLine;
+      if (!isActuallyOffline && firestoreDb && authObj && authObj.currentUser) {
+        try {
+          const stateDocRef = doc(firestoreDb, 'artifacts', appId, 'public', 'data', 'campaign', 'state');
+          await setDoc(stateDocRef, payload, { merge: true });
+        } catch (err) {
+          console.warn("Firestore save notice:", err);
+        }
+      }
+
+      updateSyncBadge(`अंतिम सेव: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
+      return true;
+    };
+
+    // Export / Import Backup Helpers
+    window.exportDataBackup = function() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.appState, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `Thala_Sarpanch_Backup_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      window.showToast('डेटा बैकअप फ़ाइल डाउनलोड हो गई!');
+    };
+
+    window.importDataBackup = function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          applyStateDelta(parsed);
+          await window.saveStateAcrossSession();
+          window.renderPublicSite();
+          if (window.appState.activeRole) {
+            window.switchAdminTab(window.appState.activeTab);
+          }
+          window.showToast('बैकअप सफलतापूर्वक रीस्टोर हो गया!');
+        } catch (err) {
+          window.showToast('अमान्य बैकअप फ़ाइल!', 'error');
+        }
+      };
+      reader.readAsText(file);
+    };
+
+    // Client-side image compressor utility
+    window.compressImageFile = function(file, maxDimension = 640, quality = 0.65) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDimension || h > maxDimension) {
+              if (w > h) {
+                h = Math.round((h * maxDimension) / w);
+                w = maxDimension;
+              } else {
+                w = Math.round((w * maxDimension) / h);
+                h = maxDimension;
+              }
+            }
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          };
+          img.onerror = () => resolve(e.target.result);
+          img.src = e.target.result;
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      });
+    };
+
+    // Startup sequence
+    window.addEventListener('DOMContentLoaded', () => {
+      updateNetworkStatus();
+      initPersistentData();
+    });
+  </script>
+
+  <script>
+    window.showToast = function(msg, type = 'success') {
+      const toast = document.getElementById('toastNotification');
+      const msgEl = document.getElementById('toastMessage');
+      const iconEl = document.getElementById('toastIcon');
+
+      msgEl.innerText = msg;
+      if (type === 'error') {
+        iconEl.className = 'fa-solid fa-circle-exclamation text-rose-400';
+      } else {
+        iconEl.className = 'fa-solid fa-circle-check text-emerald-400';
+      }
+
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3500);
+    };
+
+    window.openModal = function(title, html) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerHTML = html;
+      document.getElementById('globalModalContainer').classList.remove('hidden');
+      document.getElementById('globalModalContainer').classList.add('flex');
+    };
+
+    window.closeGlobalModal = function() {
+      document.getElementById('globalModalContainer').classList.add('hidden');
+      document.getElementById('globalModalContainer').classList.remove('flex');
+    };
+
+    window.renderPublicSite = function() {
+      const p = window.appState.profile;
+
+      // Ensure active photo is always valid: custom photo if present, otherwise default
+      const activePhoto = (p.photoUrl && p.photoUrl.trim() !== '') ? p.photoUrl : window.DEFAULT_SARPANCH_PHOTO;
+
+      // Header & Navigation
+      const navAvatar = document.getElementById('navAvatarImg');
+      const photoEl = document.getElementById('mainLeaderPhoto');
+      
+      document.getElementById('navTitleName').innerText = p.name || 'भाई फुराराम सरपंच';
+      document.getElementById('heroLeaderName').innerText = p.name || 'भाई फुराराम सरपंच';
+      document.getElementById('heroLeaderTitle').innerText = `${p.designation} — ${p.constituency}`;
+      document.getElementById('heroLeaderBio').innerText = p.bio;
+      document.getElementById('aboutLongBio').innerText = p.longBio || p.bio;
+
+      if (navAvatar) navAvatar.src = activePhoto;
+      if (photoEl) photoEl.src = activePhoto;
+
+      // Social Links
+      document.getElementById('linkInsta').href = p.instagram || '#';
+      document.getElementById('linkFb').href = p.facebook || '#';
+      document.getElementById('linkYt').href = p.youtube || '#';
+      document.getElementById('linkWa').href = p.whatsapp ? `https://wa.me/${p.whatsapp.replace(/\D/g, '')}` : '#';
+      document.getElementById('linkTw').href = p.twitter || '#';
+
+      // Live stream banner
+      const live = window.appState.liveBroadcast;
+      const liveBanner = document.getElementById('liveStreamBanner');
+      if (live && live.isLive) {
+        liveBanner.classList.remove('hidden');
+        document.getElementById('liveBannerTitle').innerText = live.title;
+        document.getElementById('liveBannerLink').href = live.url || '#';
+      } else {
+        liveBanner.classList.add('hidden');
+      }
+
+      // News Ticker
+      const ticker = document.getElementById('newsTicker');
+      if (window.appState.news.length > 0) {
+        ticker.innerHTML = window.appState.news.map(n => `
+          <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-star text-amber-400 text-[10px]"></i> <b>${n.title}</b> (${n.date})</span>
+        `).join('');
+      }
+
+      // News Cards Grid
+      const newsGrid = document.getElementById('newsGrid');
+      newsGrid.innerHTML = window.appState.news.map(n => `
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">${n.category || 'सूचना'}</span>
+              <span class="text-slate-400">${n.date}</span>
+            </div>
+            <h4 class="text-base font-bold text-slate-900 leading-snug">${n.title}</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">${n.description}</p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="text-slate-400 font-medium">ग्राम पंचायत थाला</span>
+            <button onclick="shareItem('news', '${n.title}')" class="text-brand-saffron hover:text-brand-saffronDark font-bold flex items-center gap-1">
+              <i class="fa-solid fa-share-nodes"></i> साझा करें
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Events Grid
+      const eventsGrid = document.getElementById('eventsGrid');
+      eventsGrid.innerHTML = window.appState.events.map(e => `
+        <div class="bg-gradient-to-r from-amber-500/5 via-white to-white rounded-2xl p-5 shadow-sm border border-amber-200/70 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-xs text-brand-saffron font-bold">
+              <i class="fa-regular fa-calendar-days"></i>
+              <span>${e.date} • ${e.time || ''}</span>
+            </div>
+            <h4 class="text-base font-bold text-slate-900">${e.title}</h4>
+            <p class="text-xs text-slate-600">${e.description}</p>
+            <p class="text-[11px] text-slate-500 flex items-center gap-1.5 pt-1 font-medium">
+              <i class="fa-solid fa-location-dot text-red-500"></i> ${e.location}
+            </p>
+          </div>
+          <div class="pt-4 mt-3 flex justify-end">
+            <button onclick="openCitizenRegisterModal()" class="text-xs bg-slate-900 hover:bg-slate-800 text-white font-bold px-3 py-1.5 rounded-lg shadow-sm">
+              उपस्थिति दर्ज करें
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Photos Grid
+      const photosGrid = document.getElementById('photosGrid');
+      photosGrid.innerHTML = window.appState.photos.map(p => `
+        <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-square shadow-sm border border-slate-200">
+          <img src="${p.url}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src=window.DEFAULT_SARPANCH_PHOTO;" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition p-3 flex flex-col justify-end text-white text-xs">
+            <span class="text-[10px] text-amber-300 font-bold">${p.album || 'थाला'}</span>
+            <p class="font-bold text-xs truncate">${p.title}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Videos Grid
+      const videosGrid = document.getElementById('videosGrid');
+      videosGrid.innerHTML = window.appState.videos.map(v => `
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+          <div class="aspect-video bg-black">
+            <iframe src="${v.url}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="p-3.5">
+            <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">${v.title}</h4>
+            <span class="text-[10px] text-slate-400 mt-1 block">${v.date}</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Achievements Grid
+      const achGrid = document.getElementById('achievementsGrid');
+      achGrid.innerHTML = window.appState.achievements.map(a => `
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 text-brand-saffron flex items-center justify-center text-lg">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h4 class="text-sm font-bold text-slate-900">${a.title}</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">${a.desc}</p>
+        </div>
+      `).join('');
+    };
+
+    window.shareItem = function(type, title) {
+      if (navigator.share) {
+        navigator.share({ title: title, url: window.location.href });
+      } else {
+        document.execCommand('copy');
+        showToast('लिंक कॉपी कर लिया गया है!');
+      }
+    };
+  </script>
+
+  <script>
+    window.toggleLiveChatWidget = function() {
+      const box = document.getElementById('chatBoxWindow');
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        renderChatMessages();
+      } else {
+        box.classList.add('hidden');
+      }
+    };
+
+    window.renderChatMessages = function() {
+      const container = document.getElementById('chatMessagesContainer');
+      if (!container) return;
+      container.innerHTML = window.appState.chatMessages.map(m => {
+        const isOffice = m.sender === 'office';
+        return `
+          <div class="flex flex-col ${isOffice ? 'items-start' : 'items-end'}">
+            <div class="max-w-[85%] rounded-2xl p-2.5 shadow-sm text-xs ${
+              isOffice 
+                ? 'bg-white text-slate-800 border border-slate-200 rounded-tl-none' 
+                : 'bg-brand-saffron text-white rounded-tr-none'
+            }">
+              <span class="text-[10px] font-bold block opacity-75 mb-0.5">${m.senderName || (isOffice ? 'सरपंच कार्यालय' : 'आप')}</span>
+              <p class="leading-relaxed">${m.text}</p>
+              ${m.attachment ? renderMessageAttachment(m.attachment) : ''}
+              <span class="text-[9px] block text-right mt-1 opacity-70">${m.time}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+      container.scrollTop = container.scrollHeight;
+    };
+
+    function renderMessageAttachment(att) {
+      if (att.type === 'location') {
+        return `
+          <a href="https://maps.google.com/?q=${att.lat},${att.lng}" target="_blank" class="mt-1.5 block bg-black/10 hover:bg-black/20 p-2 rounded-lg text-[11px] font-bold underline flex items-center gap-1.5">
+            <i class="fa-solid fa-map-pin text-red-500"></i> ${att.name || 'स्थान देखें (Google Map)'}
+          </a>
+        `;
+      }
+      if (att.type === 'image') {
+        return `
+          <div class="mt-1.5 rounded-lg overflow-hidden border border-white/20">
+            <img src="${att.url}" alt="Attachment" class="max-h-36 object-cover w-full" />
+          </div>
+        `;
+      }
+      return '';
+    }
+
+    window.handleCitizenSendMessage = async function(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInputMessage');
+      const text = input.value.trim();
+      if (!text && !window.appState.activeChatAttachment) return;
+
+      const newMsg = {
+        id: 'msg-' + Date.now(),
+        sender: 'citizen',
+        senderName: 'नागरिक',
+        text: text || (window.appState.activeChatAttachment.type === 'location' ? 'गाँव की लोकेशन साझा की गई' : 'फाइल भेजी गई'),
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        attachment: window.appState.activeChatAttachment
+      };
+
+      window.appState.chatMessages.push(newMsg);
+      clearChatAttachment();
+      input.value = '';
+      renderChatMessages();
+      await window.saveStateAcrossSession();
+      showToast('संदेश कार्यालय तक पहुँच गया!');
+    };
+
+    window.handleChatFileUpload = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      // Automatically compress image before sending
+      const compressed = await window.compressImageFile(file, 640, 0.65);
+      window.appState.activeChatAttachment = {
+        type: 'image',
+        url: compressed
+      };
+      document.getElementById('chatAttachmentText').innerText = `फोटो: ${file.name}`;
+      document.getElementById('chatAttachmentPreview').classList.remove('hidden');
+    };
+
+    window.shareUserLocation = function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            window.appState.activeChatAttachment = {
+              type: 'location',
+              lat: pos.coords.latitude,
+              lng: pos.coords.longitude,
+              name: `थाला लोकेशन (${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)})`
+            };
+            document.getElementById('chatAttachmentText').innerText = "📍 वर्तमान लोकेशन संलग्न";
+            document.getElementById('chatAttachmentPreview').classList.remove('hidden');
+          },
+          (err) => {
+            showToast('कृपया लोकेशन की अनुमति दें!', 'error');
+          }
+        );
+      } else {
+        showToast('ब्राउज़र में GPS उपलब्ध नहीं है', 'error');
+      }
+    };
+
+    window.clearChatAttachment = function() {
+      window.appState.activeChatAttachment = null;
+      document.getElementById('chatAttachmentPreview').classList.add('hidden');
+      document.getElementById('chatFileInput').value = '';
+    };
+
+    // Public Contact Form Submission
+    window.handlePublicContactSubmit = async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactNameInput').value.trim();
+      const phone = document.getElementById('contactPhoneInput').value.trim();
+      const msg = document.getElementById('contactMessageInput').value.trim();
+
+      const newVisitor = {
+        id: 'vis-' + Date.now(),
+        name: name,
+        phone: phone,
+        ward: 'सम्पर्क फॉर्म',
+        category: 'नागरिक',
+        message: msg,
+        timestamp: new Date().toLocaleDateString('en-GB') + ', ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        status: 'Pending'
+      };
+
+      window.appState.visitors.unshift(newVisitor);
+
+      window.appState.chatMessages.push({
+        id: 'c-' + Date.now(),
+        sender: 'citizen',
+        senderName: name,
+        text: `[सम्पर्क प्रपत्र] ${msg} (फोन: ${phone})`,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+
+      await window.saveStateAcrossSession();
+      e.target.reset();
+      showToast('आपका संदेश भाई फुराराम सरपंच कार्यालय को प्राप्त हुआ!');
+    };
+
+    // Citizen Registration Modal
+    window.openCitizenRegisterModal = function() {
+      window.openModal("नागरिक परिवार पंजीयन — ग्राम पंचायत थाला", `
+        <form onsubmit="handleCitizenRegistrationSubmit(event)" class="space-y-3 text-xs">
+          <p class="text-slate-500 font-medium">थाला ग्राम पंचायत के विकास, योजनाओं और आयोजनों की सीधी सूचना पाने हेतु विवरण भरें:</p>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">पूरा नाम *</label>
+            <input type="text" id="regName" required placeholder="जैसे: रमेश कुमार" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-2 focus:ring-brand-saffron" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">मोबाइल नंबर *</label>
+            <input type="tel" id="regPhone" required placeholder="जैसे: 9829012345" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-2 focus:ring-brand-saffron" />
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">वार्ड / ढाणी *</label>
+              <input type="text" id="regWard" required placeholder="वार्ड नं. 4" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">नागरिक वर्ग</label>
+              <select id="regCategory" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-bold text-slate-700">
+                <option value="किसान">किसान भाई</option>
+                <option value="युवा / छात्र">युवा / छात्र</option>
+                <option value="व्यापारी">व्यापारी बंधु</option>
+                <option value="मातृशक्ति">मातृशक्ति</option>
+                <option value="वरिष्ठ नागरिक">वरिष्ठ नागरिक</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">सुझाव अथवा मुख्य मांग</label>
+            <textarea id="regMsg" rows="2" placeholder="गाँव के विकास हेतु कोई सुझाव..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold py-3 rounded-xl shadow-lg transition">
+            पंजीयन सुरक्षित करें
+          </button>
+        </form>
+      `);
+    };
+
+    window.handleCitizenRegistrationSubmit = async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const ward = document.getElementById('regWard').value.trim();
+      const cat = document.getElementById('regCategory').value;
+      const msg = document.getElementById('regMsg').value.trim();
+
+      const newVis = {
+        id: 'vis-' + Date.now(),
+        name: name,
+        phone: phone,
+        ward: ward,
+        category: cat,
+        message: msg || 'नया नागरिक पंजीयन',
+        timestamp: new Date().toLocaleDateString('en-GB') + ', ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        status: 'Registered'
+      };
+
+      window.appState.visitors.unshift(newVis);
+      await window.saveStateAcrossSession();
+      closeGlobalModal();
+      showToast(`पंजीयन सफल! भाई फुराराम सरपंच परिवार में स्वागत है, ${name} जी!`);
+    };
+  </script>
+
+  <script>
+    window.openPortalAuthModal = function() {
+      window.openModal("स्टाफ व प्रबंधन लॉगिन (Admin & Editor Access)", `
+        <form onsubmit="handlePortalAuthentication(event)" class="space-y-4 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">प्रबंधन अधिकार (Select Access Level) *</label>
+            <select id="portalRoleSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-bold text-slate-800">
+              <option value="SUPER_ADMIN">👑 Super Admin (Full Control • Pass: @fusram sarpanch)</option>
+              <option value="EDITOR">✍️ Editor Desk (Photos, News, Events, PR • Pass: team edit)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">सुरक्षा पासवर्ड दर्ज करें (Password) *</label>
+            <input type="password" id="portalPassInput" required placeholder="Enter password..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-mono text-slate-900 focus:ring-2 focus:ring-brand-saffron" />
+          </div>
+
+          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-[11px] leading-relaxed">
+            <b>अधिकृत पासवर्ड जानकारी:</b><br/>
+            • Super Admin: <code class="font-bold">@fusram sarpanch</code><br/>
+            • Editor Desk: <code class="font-bold">team edit</code>
+          </div>
+
+          <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-right-to-bracket text-brand-saffron"></i>
+            <span>सीएमएस में प्रवेश करें</span>
+          </button>
+        </form>
+      `);
+    };
+
+    window.handlePortalAuthentication = function(e) {
+      e.preventDefault();
+      const role = document.getElementById('portalRoleSelect').value;
+      const pass = document.getElementById('portalPassInput').value.trim();
+
+      if (window.appState.passwords[role] === pass) {
+        window.appState.activeRole = role;
+        closeGlobalModal();
+        openAdminCMS();
+        showToast(`सत्यापन सफल! आपका स्वागत है।`);
+      } else {
+        showToast('गलत पासवर्ड! कृपया सही अधिकृत पासवर्ड दर्ज करें।', 'error');
+      }
+    };
+
+    window.openAdminCMS = function() {
+      const overlay = document.getElementById('adminCMSOverlay');
+      overlay.classList.remove('hidden');
+
+      const badge = document.getElementById('currentRoleBadge');
+      badge.innerText = window.appState.activeRole === 'SUPER_ADMIN' ? '👑 Super Admin' : '✍️ Editor Desk';
+
+      renderAdminTabs();
+      switchAdminTab(window.appState.activeRole === 'SUPER_ADMIN' ? 'overview' : 'photos');
+    };
+
+    window.exitAdminPortal = function() {
+      window.appState.activeRole = null;
+      document.getElementById('adminCMSOverlay').classList.add('hidden');
+      renderPublicSite();
+      showToast('आप सुरक्षित रूप से लॉगआउट हो गए हैं।');
+    };
+
+    window.renderAdminTabs = function() {
+      const nav = document.getElementById('cmsTabsBar');
+      const isSuper = window.appState.activeRole === 'SUPER_ADMIN';
+
+      let tabs = [];
+      if (isSuper) {
+        tabs = [
+          { id: 'overview', icon: 'fa-chart-pie', label: 'डैशबोर्ड' },
+          { id: 'profile', icon: 'fa-user-pen', label: 'प्रोफाइल व फोटो' },
+          { id: 'visitors', icon: 'fa-users', label: 'नागरिक व कॉल' },
+          { id: 'chatdesk', icon: 'fa-comments', label: 'लाइव चैट' },
+          { id: 'photos', icon: 'fa-camera', label: 'फोटो गैलरी' },
+          { id: 'news', icon: 'fa-newspaper', label: 'समाचार' },
+          { id: 'events', icon: 'fa-calendar-plus', label: 'कार्यक्रम' },
+          { id: 'videos', icon: 'fa-video', label: 'वीडियो' },
+          { id: 'prdesk', icon: 'fa-bullhorn', label: 'PR व सोशल' },
+          { id: 'livestream', icon: 'fa-tower-broadcast', label: 'लाइव' }
+        ];
+      } else {
+        tabs = [
+          { id: 'photos', icon: 'fa-camera', label: 'फोटो अपलोड' },
+          { id: 'news', icon: 'fa-newspaper', label: 'समाचार बनाएं' },
+          { id: 'events', icon: 'fa-calendar-plus', label: 'कार्यक्रम' },
+          { id: 'videos', icon: 'fa-video', label: 'वीडियो' },
+          { id: 'prdesk', icon: 'fa-bullhorn', label: 'PR व सोशल' }
+        ];
+      }
+
+      nav.innerHTML = tabs.map(t => `
+        <button onclick="switchAdminTab('${t.id}')" id="tab-btn-${t.id}" class="px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ${
+          window.appState.activeTab === t.id ? 'bg-brand-saffron text-white shadow' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+        }">
+          <i class="fa-solid ${t.icon}"></i>
+          <span>${t.label}</span>
+        </button>
+      `).join('');
+    };
+
+    window.switchAdminTab = function(tabId) {
+      window.appState.activeTab = tabId;
+      renderAdminTabs();
+      const content = document.getElementById('cmsContentArea');
+
+      switch (tabId) {
+        case 'overview':
+          renderAdminOverview(content);
+          break;
+        case 'profile':
+          renderAdminProfile(content);
+          break;
+        case 'visitors':
+          renderAdminVisitors(content);
+          break;
+        case 'chatdesk':
+          renderAdminChatDesk(content);
+          break;
+        case 'photos':
+          renderAdminPhotos(content);
+          break;
+        case 'news':
+          renderAdminNews(content);
+          break;
+        case 'events':
+          renderAdminEvents(content);
+          break;
+        case 'videos':
+          renderAdminVideos(content);
+          break;
+        case 'prdesk':
+          renderAdminPRDesk(content);
+          break;
+        case 'livestream':
+          renderAdminLiveStream(content);
+          break;
+      }
+    };
+  </script>
+
+  <script>
+    function renderAdminOverview(el) {
+      el.innerHTML = `
+        <div class="space-y-4">
+          <!-- Backup and Sync Toolbar -->
+          <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="font-bold text-slate-200">डेटाबेस स्थिति: 100% सुरक्षित</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="saveStateAcrossSession().then(() => showToast('सभी डेटा सुरक्षित रूप से सेव हो गया!'))" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow">
+                <i class="fa-solid fa-floppy-disk"></i> तुरंत सेव करें
+              </button>
+              <button onclick="exportDataBackup()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold px-3 py-1.5 rounded-lg border border-amber-400/30 flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i> बैकअप डाउनलोड
+              </button>
+              <label class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5">
+                <i class="fa-solid fa-upload"></i> रीस्टोर
+                <input type="file" accept=".json" class="hidden" onchange="importDataBackup(event)" />
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 text-center">
+              <span class="text-xs text-slate-400">कुल नागरिक</span>
+              <p class="text-2xl font-black text-amber-400 mt-1">${window.appState.visitors.length}</p>
+            </div>
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 text-center">
+              <span class="text-xs text-slate-400">गैलरी फोटो</span>
+              <p class="text-2xl font-black text-white mt-1">${window.appState.photos.length}</p>
+            </div>
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 text-center">
+              <span class="text-xs text-slate-400">ताज़ा समाचार</span>
+              <p class="text-2xl font-black text-emerald-400 mt-1">${window.appState.news.length}</p>
+            </div>
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 text-center">
+              <span class="text-xs text-slate-400">नागरिक संदेश</span>
+              <p class="text-2xl font-black text-sky-400 mt-1">${window.appState.chatMessages.length}</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen text-brand-saffron"></i>
+              <span>त्वरित मोबाइल प्रबंधन गाइड</span>
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              आप अपने मोबाइल से सीधे फोटो अपलोड, समाचार प्रकाशन और नागरिक संवाद कर सकते हैं। हर बदलाव बिना रीलोड के तुरंत वेबसाइट पर लाइव हो जाता है।
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1 text-xs">
+              <button onclick="switchAdminTab('photos')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
+                <i class="fa-solid fa-camera text-brand-saffron"></i> फोटो जोड़ें
+              </button>
+              <button onclick="switchAdminTab('news')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
+                <i class="fa-solid fa-newspaper text-emerald-400"></i> नया समाचार
+              </button>
+              <button onclick="switchAdminTab('visitors')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
+                <i class="fa-solid fa-phone text-amber-400"></i> नागरिक कॉल डेस्क
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAdminProfile(el) {
+      const p = window.appState.profile;
+      const currentPhoto = (p.photoUrl && p.photoUrl.trim() !== '') ? p.photoUrl : window.DEFAULT_SARPANCH_PHOTO;
+      el.innerHTML = `
+        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-user-pen text-brand-saffron"></i>
+              <span>सरपंच प्रोफाइल एवं मुख्य फोटो प्रबंधन</span>
+            </h3>
+            <button type="button" onclick="resetToOriginalPhoto()" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold px-2.5 py-1 rounded-lg border border-amber-400/30 transition flex items-center gap-1.5" title="मूल फोटो पुनर्स्थापित करें">
+              <i class="fa-solid fa-rotate-left"></i> मूल फोटो लगाएं
+            </button>
+          </div>
+
+          <form onsubmit="handleSaveProfile(event)" class="space-y-3 text-xs">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-3.5 bg-slate-950 rounded-xl border border-slate-800">
+              <div class="w-24 h-28 rounded-2xl overflow-hidden bg-slate-800 shrink-0 border-2 border-brand-saffron shadow">
+                <img id="adminPhotoPreview" src="${currentPhoto}" class="w-full h-full object-cover object-top" onerror="this.src=window.DEFAULT_SARPANCH_PHOTO;" />
+              </div>
+              <div class="space-y-2 flex-1">
+                <label class="block font-bold text-slate-200">मोबाइल गैलरी से नई फोटो चुनें (Upload New Photo) *</label>
+                <input type="file" accept="image/*" onchange="handleAdminPhotoFile(event)" class="text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-brand-saffron file:text-white file:text-xs file:font-bold cursor-pointer" />
+                <p class="text-[10px] text-slate-500">नई फोटो चुनने पर यह तुरंत सार्वजनिक पोर्टल पर अपडेट होगी। कभी भी 'मूल फोटो लगाएं' से पुरानी फोटो वापस ला सकते हैं।</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1">नेता / सरपंच का नाम</label>
+                <input type="text" id="profName" value="${p.name}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">पद (Designation)</label>
+                <input type="text" id="profDesig" value="${p.designation}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">ग्राम पंचायत क्षेत्र</label>
+              <input type="text" id="profConst" value="${p.constituency}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">मुख्य बायो / संदेश (Short Bio)</label>
+              <textarea id="profBio" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white">${p.bio}</textarea>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800 space-y-2">
+              <h4 class="font-bold text-amber-400">सोशल मीडिया लिंक्स (Social Media Accounts)</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-slate-400">Instagram Link</label>
+                  <input type="url" id="profInsta" value="${p.instagram || ''}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white" />
+                </div>
+                <div>
+                  <label class="block text-[11px] text-slate-400">Facebook Link</label>
+                  <input type="url" id="profFb" value="${p.facebook || ''}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white" />
+                </div>
+                <div>
+                  <label class="block text-[11px] text-slate-400">YouTube Channel Link</label>
+                  <input type="url" id="profYt" value="${p.youtube || ''}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white" />
+                </div>
+                <div>
+                  <label class="block text-[11px] text-slate-400">WhatsApp नंबर (जैसे: 9829012345)</label>
+                  <input type="text" id="profWa" value="${p.whatsapp || ''}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white" />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold py-3 rounded-xl shadow-lg transition mt-4">
+              प्रोफाइल अपडेट व सुरक्षित करें
+            </button>
+          </form>
+        </div>
+      `;
+    }
+
+    window.handleAdminPhotoFile = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const compressed = await window.compressImageFile(file, 640, 0.7);
+      if (compressed) {
+        window.appState.profile.photoUrl = compressed;
+        document.getElementById('adminPhotoPreview').src = compressed;
+        showToast('नई फोटो चुनी गई! "प्रोफाइल अपडेट व सुरक्षित करें" दबाएं।');
+      }
+    };
+
+    window.resetToOriginalPhoto = async function() {
+      window.appState.profile.photoUrl = window.DEFAULT_SARPANCH_PHOTO;
+      const preview = document.getElementById('adminPhotoPreview');
+      if (preview) preview.src = window.DEFAULT_SARPANCH_PHOTO;
+      await window.saveStateAcrossSession();
+      window.renderPublicSite();
+      showToast('मूल फोटो सफलतापूर्वक पुनर्स्थापित हो गई!');
+    };
+
+    window.handleSaveProfile = async function(e) {
+      e.preventDefault();
+      const p = window.appState.profile;
+      p.name = document.getElementById('profName').value;
+      p.designation = document.getElementById('profDesig').value;
+      p.constituency = document.getElementById('profConst').value;
+      p.bio = document.getElementById('profBio').value;
+      p.instagram = document.getElementById('profInsta').value;
+      p.facebook = document.getElementById('profFb').value;
+      p.youtube = document.getElementById('profYt').value;
+      p.whatsapp = document.getElementById('profWa').value;
+
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      showToast('प्रोफाइल और वेबसाइट सफलतापूर्वक सुरक्षित हो गई!');
+    };
+  </script>
+
+  <script>
+    function renderAdminVisitors(el) {
+      el.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-users text-brand-saffron"></i>
+              <span>नागरिक पंजीयन एवं डायरेक्ट कॉलिंग डेस्क</span>
+            </h3>
+            <span class="text-xs text-slate-400">कुल पंजीकृत: ${window.appState.visitors.length}</span>
+          </div>
+
+          <div class="space-y-2.5 text-xs">
+            ${window.appState.visitors.length === 0 ? '<p class="text-slate-500 py-4 text-center">अभी कोई नागरिक रिकॉर्ड नहीं है।</p>' : ''}
+            ${window.appState.visitors.map(v => `
+              <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-2.5">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h4 class="font-bold text-white text-sm">${v.name}</h4>
+                    <span class="text-[11px] text-amber-400 font-semibold">${v.category || 'नागरिक'} • ${v.ward}</span>
+                    <span class="text-[10px] text-slate-500 block">${v.timestamp}</span>
+                  </div>
+                  <span class="bg-slate-800 text-slate-300 text-[10px] px-2 py-0.5 rounded font-bold">${v.status || 'Active'}</span>
+                </div>
+
+                <p class="text-slate-300 bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 leading-relaxed">
+                  "${v.message || 'कोई संदेश नहीं'}"
+                </p>
+
+                <!-- 1-Tap Mobile Direct Calling Actions -->
+                <div class="flex flex-wrap items-center gap-2 pt-1">
+                  <a href="tel:${v.phone}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs transition shadow">
+                    <i class="fa-solid fa-phone"></i> सीधा कॉल (${v.phone})
+                  </a>
+                  <a href="https://wa.me/91${v.phone.replace(/\D/g, '')}?text=राम-राम%20${encodeURIComponent(v.name)}%20जी,%20भाई%20फुराराम%20सरपंच%20कार्यालय%20थाला%20से%20सम्पर्क%20कर%20रहे%20हैं।" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs transition shadow">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                  </a>
+                  <button onclick="deleteVisitor('${v.id}')" class="text-rose-400 hover:text-rose-300 p-1.5 ml-auto">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.deleteVisitor = async function(id) {
+      window.appState.visitors = window.appState.visitors.filter(v => v.id !== id);
+      await window.saveStateAcrossSession();
+      switchAdminTab('visitors');
+      showToast('नागरिक रिकॉर्ड हटाया गया');
+    };
+
+    function renderAdminChatDesk(el) {
+      el.innerHTML = `
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex flex-col h-[520px]">
+          <div class="bg-slate-950 p-3.5 border-b border-slate-800 flex items-center justify-between">
+            <h4 class="text-xs font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-comments text-amber-400"></i>
+              <span>लाइव नागरिक संवाद डेस्क (Admin Staff Chat Desk)</span>
+            </h4>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-bold">100% Real Person</span>
+          </div>
+
+          <div id="adminChatStream" class="flex-1 overflow-y-auto p-4 space-y-2.5 text-xs bg-slate-950">
+            ${window.appState.chatMessages.map(m => `
+              <div class="flex flex-col ${m.sender === 'office' ? 'items-end' : 'items-start'}">
+                <div class="max-w-[85%] rounded-2xl p-2.5 text-xs ${
+                  m.sender === 'office' 
+                    ? 'bg-brand-saffron text-white rounded-tr-none' 
+                    : 'bg-slate-800 text-slate-200 border border-slate-700 rounded-tl-none'
+                }">
+                  <span class="text-[10px] font-bold block opacity-75">${m.senderName}</span>
+                  <p>${m.text}</p>
+                  ${m.attachment ? renderMessageAttachment(m.attachment) : ''}
+                  <span class="text-[9px] block text-right opacity-60 mt-1">${m.time}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <form onsubmit="handleAdminSendReply(event)" class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
+            <input type="text" id="adminReplyInput" placeholder="सरपंच कार्यालय की ओर से उत्तर लिखें..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-brand-saffron" />
+            <button type="submit" class="bg-brand-saffron hover:bg-brand-saffronDark text-white px-4 py-2 rounded-xl text-xs font-bold transition">
+              भेजें
+            </button>
+          </form>
+        </div>
+      `;
+      const stream = document.getElementById('adminChatStream');
+      if (stream) stream.scrollTop = stream.scrollHeight;
+    }
+
+    window.handleAdminSendReply = async function(e) {
+      e.preventDefault();
+      const input = document.getElementById('adminReplyInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      window.appState.chatMessages.push({
+        id: 'reply-' + Date.now(),
+        sender: 'office',
+        senderName: 'कार्यालय भाई फुराराम सरपंच',
+        text: text,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+
+      input.value = '';
+      await window.saveStateAcrossSession();
+      renderAdminChatDesk(document.getElementById('cmsContentArea'));
+      renderChatMessages();
+      showToast('उत्तर नागरिक को प्रेषित किया गया');
+    };
+  </script>
+
+  <script>
+    function renderAdminPhotos(el) {
+      el.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <i class="fa-solid fa-camera text-brand-saffron"></i>
+              <span>मोबाइल गैलरी से नई फोटो अपलोड करें</span>
+            </h4>
+            <form onsubmit="handleAddPhoto(event)" class="space-y-3">
+              <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <input type="file" id="photoFileInput" accept="image/*" required class="text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-brand-saffron file:text-white file:font-bold cursor-pointer" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input type="text" id="photoTitle" required placeholder="फोटो का शीर्षक / विवरण *" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+                <input type="text" id="photoAlbum" placeholder="एल्बम (जैसे: सड़क निर्माण, जनसभा)" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
+              <button type="submit" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold px-4 py-2.5 rounded-xl shadow transition w-full sm:w-auto">
+                फोटो प्रकाशित करें (Publish)
+              </button>
+            </form>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            ${window.appState.photos.map(p => `
+              <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 relative group">
+                <div class="aspect-square bg-slate-950">
+                  <img src="${p.url}" class="w-full h-full object-cover" onerror="this.src=window.DEFAULT_SARPANCH_PHOTO;" />
+                </div>
+                <div class="p-2 flex items-center justify-between">
+                  <span class="truncate font-bold text-white text-[11px]">${p.title}</span>
+                  <button onclick="deletePhoto('${p.id}')" class="text-rose-400 hover:text-rose-300 p-1">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleAddPhoto = async function(e) {
+      e.preventDefault();
+      const file = document.getElementById('photoFileInput').files[0];
+      const title = document.getElementById('photoTitle').value;
+      const album = document.getElementById('photoAlbum').value || 'थाला';
+
+      if (!file) return;
+
+      const compressed = await window.compressImageFile(file, 640, 0.65);
+      const newPhoto = {
+        id: 'p-' + Date.now(),
+        title: title,
+        album: album,
+        url: compressed,
+        date: new Date().toLocaleDateString('en-GB')
+      };
+      window.appState.photos.unshift(newPhoto);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('photos');
+      showToast('नई फोटो सुरक्षित और प्रकाशित हो गई!');
+    };
+
+    window.deletePhoto = async function(id) {
+      window.appState.photos = window.appState.photos.filter(p => p.id !== id);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('photos');
+      showToast('फोटो हटाई गई');
+    };
+
+    // News Management
+    function renderAdminNews(el) {
+      el.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <i class="fa-solid fa-newspaper text-emerald-400"></i>
+              <span>नया समाचार / प्रेस विज्ञप्ति प्रकाशित करें</span>
+            </h4>
+            <form onsubmit="handleAddNews(event)" class="space-y-3">
+              <input type="text" id="newsTitle" required placeholder="समाचार का शीर्षक *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="newsCategory" placeholder="श्रेणी (जैसे: विकास कार्य, कृषि)" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+                <input type="text" id="newsDate" value="${new Date().toLocaleDateString('en-GB')}" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
+              <textarea id="newsDesc" rows="3" required placeholder="विस्तृत समाचार विवरण..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white"></textarea>
+              <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2.5 rounded-xl shadow transition">
+                समाचार प्रकाशित करें
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-2">
+            ${window.appState.news.map(n => `
+              <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-white text-xs">${n.title}</h4>
+                  <span class="text-[10px] text-slate-400">${n.date} • ${n.category}</span>
+                </div>
+                <button onclick="deleteNews('${n.id}')" class="text-rose-400 hover:text-rose-300 p-1.5">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleAddNews = async function(e) {
+      e.preventDefault();
+      const n = {
+        id: 'n-' + Date.now(),
+        title: document.getElementById('newsTitle').value,
+        category: document.getElementById('newsCategory').value || 'ग्राम सूचना',
+        date: document.getElementById('newsDate').value,
+        description: document.getElementById('newsDesc').value,
+        status: 'Published'
+      };
+      window.appState.news.unshift(n);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('news');
+      showToast('समाचार सुरक्षित और प्रकाशित हो गया!');
+    };
+
+    window.deleteNews = async function(id) {
+      window.appState.news = window.appState.news.filter(n => n.id !== id);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('news');
+      showToast('समाचार हटाया गया');
+    };
+
+    // Events Management
+    function renderAdminEvents(el) {
+      el.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <i class="fa-solid fa-calendar-plus text-amber-400"></i>
+              <span>नवीन ग्राम सभा या दौरा जोड़ें</span>
+            </h4>
+            <form onsubmit="handleAddEvent(event)" class="space-y-3">
+              <input type="text" id="evTitle" required placeholder="कार्यक्रम का नाम *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" id="evDate" required placeholder="तारीख (जैसे: 15 Sep 2026)" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+                <input type="text" id="evTime" placeholder="समय (जैसे: 11:00 AM)" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
+              <input type="text" id="evLoc" required placeholder="स्थान (Location) *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              <textarea id="evDesc" rows="2" placeholder="कार्यक्रम का उद्देश्य..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white"></textarea>
+              <button type="submit" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold px-4 py-2.5 rounded-xl shadow transition">
+                कार्यक्रम प्रकाशित करें
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-2">
+            ${window.appState.events.map(ev => `
+              <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-white text-xs">${ev.title}</h4>
+                  <span class="text-[10px] text-amber-400 font-semibold">${ev.date} (${ev.time || ''}) • ${ev.location}</span>
+                </div>
+                <button onclick="deleteEvent('${ev.id}')" class="text-rose-400 hover:text-rose-300 p-1.5">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleAddEvent = async function(e) {
+      e.preventDefault();
+      const ev = {
+        id: 'ev-' + Date.now(),
+        title: document.getElementById('evTitle').value,
+        date: document.getElementById('evDate').value,
+        time: document.getElementById('evTime').value,
+        location: document.getElementById('evLoc').value,
+        description: document.getElementById('evDesc').value
+      };
+      window.appState.events.unshift(ev);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('events');
+      showToast('कार्यक्रम सुरक्षित और प्रकाशित हो गया!');
+    };
+
+    window.deleteEvent = async function(id) {
+      window.appState.events = window.appState.events.filter(e => e.id !== id);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('events');
+      showToast('कार्यक्रम हटाया गया');
+    };
+
+    // Videos Management
+    function renderAdminVideos(el) {
+      el.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <i class="fa-solid fa-video text-red-500"></i>
+              <span>YouTube भाषण या वीडियो लिंक जोड़ें</span>
+            </h4>
+            <form onsubmit="handleAddVideo(event)" class="space-y-3">
+              <input type="text" id="vidTitle" required placeholder="वीडियो का शीर्षक *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+              <input type="url" id="vidUrl" required placeholder="YouTube Embed URL (जैसे: https://www.youtube.com/embed/...)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              <button type="submit" class="bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2.5 rounded-xl shadow transition">
+                वीडियो जोड़ें
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-2">
+            ${window.appState.videos.map(v => `
+              <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <span class="font-bold text-white text-xs truncate max-w-xs">${v.title}</span>
+                <button onclick="deleteVideo('${v.id}')" class="text-rose-400 hover:text-rose-300 p-1.5">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleAddVideo = async function(e) {
+      e.preventDefault();
+      const v = {
+        id: 'v-' + Date.now(),
+        title: document.getElementById('vidTitle').value,
+        url: document.getElementById('vidUrl').value,
+        date: new Date().toLocaleDateString('en-GB')
+      };
+      window.appState.videos.unshift(v);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('videos');
+      showToast('वीडियो जोड़ दिया गया!');
+    };
+
+    window.deleteVideo = async function(id) {
+      window.appState.videos = window.appState.videos.filter(v => v.id !== id);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('videos');
+      showToast('वीडियो हटाया गया');
+    };
+
+    // PR Management
+    function renderAdminPRDesk(el) {
+      el.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <i class="fa-solid fa-bullhorn text-brand-saffron"></i>
+              <span>मल्टी-प्लेटफॉर्म सोशल PR प्रसारण</span>
+            </h4>
+            <form onsubmit="handleCreatePRPost(event)" class="space-y-3">
+              <input type="text" id="prTitle" required placeholder="प्रेस विज्ञप्ति या पोस्ट का शीर्षक *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+              <div class="flex items-center gap-4 text-slate-300">
+                <label class="flex items-center gap-1.5"><input type="checkbox" id="prYt" checked /> YouTube</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" id="prFb" checked /> Facebook</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" id="prInsta" checked /> Instagram</label>
+              </div>
+              <button type="submit" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold px-4 py-2.5 rounded-xl shadow transition">
+                सोशल मीडिया पर प्रसारित करें
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-2">
+            ${window.appState.prPosts.map(pr => `
+              <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div>
+                  <h4 class="font-bold text-white text-xs">${pr.title}</h4>
+                  <span class="text-[10px] text-slate-400">चैनल: ${pr.channels.join(', ')} • ${pr.date}</span>
+                </div>
+                <span class="text-emerald-400 text-[10px] font-bold">Published</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleCreatePRPost = async function(e) {
+      e.preventDefault();
+      const channels = [];
+      if (document.getElementById('prYt').checked) channels.push('YouTube');
+      if (document.getElementById('prFb').checked) channels.push('Facebook');
+      if (document.getElementById('prInsta').checked) channels.push('Instagram');
+
+      const pr = {
+        id: 'pr-' + Date.now(),
+        title: document.getElementById('prTitle').value,
+        channels: channels,
+        status: 'Published',
+        date: new Date().toLocaleDateString('en-GB'),
+        author: window.appState.activeRole
+      };
+      window.appState.prPosts.unshift(pr);
+      await window.saveStateAcrossSession();
+      switchAdminTab('prdesk');
+      showToast('PR पोस्ट सुरक्षित और प्रसारित!');
+    };
+
+    // Live Broadcast Control
+    function renderAdminLiveStream(el) {
+      const live = window.appState.liveBroadcast;
+      el.innerHTML = `
+        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4 text-xs">
+          <h4 class="font-bold text-white text-sm flex items-center gap-2">
+            <i class="fa-solid fa-tower-broadcast text-rose-500"></i>
+            <span>लाइव प्रसारण नियंत्रण (Live Broadcast Control)</span>
+          </h4>
+
+          <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 flex items-center justify-between">
+            <div>
+              <p class="font-bold text-white text-sm">वर्तमान स्थिति: ${live.isLive ? '🔴 LIVE चालू है' : '⚪ बंद है'}</p>
+              <span class="text-[10px] text-slate-400">सक्रिय होने पर मुख्य वेबसाइट पर लाल लाइव बैनर दिखाई देगा।</span>
+            </div>
+            <button onclick="toggleLiveBroadcastState()" class="px-4 py-2 rounded-xl font-bold text-xs shadow ${live.isLive ? 'bg-rose-600 hover:bg-rose-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'}">
+              ${live.isLive ? 'लाइव बंद करें' : 'लाइव शुरू करें'}
+            </button>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <div>
+              <label class="block text-slate-400 mb-1">लाइव प्रसारण का शीर्षक</label>
+              <input type="text" id="liveTitleInput" value="${live.title}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">YouTube / Facebook लाइव लिंक</label>
+              <input type="url" id="liveUrlInput" value="${live.url}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+            </div>
+            <button onclick="updateLiveStreamMeta()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-xl">
+              शीर्षक व लिंक सहेजें
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    window.toggleLiveBroadcastState = async function() {
+      window.appState.liveBroadcast.isLive = !window.appState.liveBroadcast.isLive;
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('livestream');
+      showToast(window.appState.liveBroadcast.isLive ? '🔴 लाइव प्रसारण सक्रिय कर दिया गया है!' : 'लाइव प्रसारण समाप्त किया गया।');
+    };
+
+    window.updateLiveStreamMeta = async function() {
+      window.appState.liveBroadcast.title = document.getElementById('liveTitleInput').value;
+      window.appState.liveBroadcast.url = document.getElementById('liveUrlInput').value;
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      showToast('लाइव प्रसारण विवरण सुरक्षित!');
+    };
+  </script>
+</body>
+</html>
