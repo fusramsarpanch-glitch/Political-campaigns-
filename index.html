@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>भाई फुराराम सरपंच - ग्राम पंचायत थाला | Fusram Sarpanch Platform</title>
+  <title>भाई फुराराम सरपंच - ग्राम पंचायत टहला | Fusram Sarpanch Official Portal</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -60,7 +60,7 @@
           आधिकारिक पोर्टल
         </span>
         <span class="text-slate-300 font-medium truncate">
-          ग्राम पंचायत थाला (Thala) — सेवा, पारदर्शिता एवं सर्वांगीण विकास
+          ग्राम पंचायत टहला (Tehla) — सेवा, पारदर्शिता एवं सर्वांगीण विकास
         </span>
       </div>
       <div class="flex items-center gap-3 text-[11px]">
@@ -86,14 +86,14 @@
       <!-- Brand & Sarpanch Identity -->
       <a href="#home" class="flex items-center gap-3 group">
         <div class="w-11 h-11 rounded-full border-2 border-brand-saffron overflow-hidden bg-slate-100 flex items-center justify-center shrink-0 shadow">
-          <img id="navAvatarImg" src="" alt="भाई फुराराम सरपंच" class="w-full h-full object-cover object-top" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23FF6B00\'/%3E%3Ccircle cx=\'50\' cy=\'38\' r=\'20\' fill=\'%23FFF\'/%3E%3Cpath d=\'M20,85 C20,62 34,56 50,56 C66,56 80,62 80,85 Z\' fill=\'%23FFF\'/%3E%3C/svg%3E';" />
+          <img id="navAvatarImg" src="" alt="भाई फुराराम सरपंच" class="w-full h-full object-cover object-top" onerror="this.src=window.DEFAULT_SARPANCH_PHOTO;" />
         </div>
         <div>
           <h1 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-brand-saffron transition flex items-center gap-1.5 leading-tight">
             <span id="navTitleName">भाई फुराराम सरपंच</span>
             <span class="text-red-500">❤️</span>
           </h1>
-          <p class="text-[11px] text-slate-500 font-semibold leading-none mt-0.5">सरपंच — ग्राम पंचायत थाला</p>
+          <p class="text-[11px] text-slate-500 font-semibold leading-none mt-0.5">सरपंच — ग्राम पंचायत टहला</p>
         </div>
       </a>
 
@@ -103,7 +103,8 @@
         <a href="#news" class="hover:text-brand-saffron transition">समाचार</a>
         <a href="#events" class="hover:text-brand-saffron transition">ग्राम सभा व दौरे</a>
         <a href="#gallery" class="hover:text-brand-saffron transition">फोटो गैलरी</a>
-        <a href="#videos" class="hover:text-brand-saffron transition">वीडियो</a>
+        <a href="#videos" class="hover:text-brand-saffron transition">वीडियो व रील</a>
+        <a href="#songs" class="hover:text-brand-saffron transition">अभियान गीत</a>
         <a href="#achievements" class="hover:text-brand-saffron transition">विकास कार्य</a>
         <a href="#contact" class="hover:text-brand-saffron transition">सम्पर्क</a>
       </nav>
@@ -131,10 +132,11 @@
           <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
         </span>
         <span class="font-black uppercase tracking-wider text-[10px] bg-red-900 px-2 py-0.5 rounded">सीधा प्रसारण</span>
-        <span id="liveBannerTitle" class="font-bold truncate">भाई फुराराम सरपंच ग्राम सभा से सीधा लाइव हैं</span>
+        <span id="liveBannerPlatform" class="font-bold text-amber-300 text-xs uppercase bg-black/30 px-1.5 py-0.5 rounded">YouTube</span>
+        <span id="liveBannerTitle" class="font-bold truncate">भाई फुराराम सरपंच ग्राम पंचायत टहला से सीधा लाइव हैं</span>
       </div>
-      <a id="liveBannerLink" href="https://youtube.com" target="_blank" class="bg-white text-red-700 hover:bg-red-50 px-3 py-1 rounded-lg font-bold text-xs shrink-0 flex items-center gap-1 shadow transition">
-        <i class="fa-brands fa-youtube text-red-600 text-sm"></i> अभी देखें
+      <a id="liveBannerLink" href="https://youtube.com" target="_blank" class="bg-white text-red-700 hover:bg-red-50 px-3.5 py-1 rounded-lg font-bold text-xs shrink-0 flex items-center gap-1.5 shadow transition">
+        <i class="fa-solid fa-tower-broadcast text-red-600 text-sm animate-pulse"></i> अभी देखें (Watch Live)
       </a>
     </div>
   </div>
@@ -146,18 +148,18 @@
       <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
         <div class="inline-flex items-center gap-2 bg-brand-saffronLight border border-brand-saffron/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-brand-saffronDark shadow-sm">
           <i class="fa-solid fa-seedling text-brand-saffron"></i>
-          <span>गाँव का विकास — जन-जन का अटूट विश्वास</span>
+          <span>टहला गाँव का विकास — जन-जन का अटूट विश्वास</span>
         </div>
 
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
           जनसेवक <span id="heroLeaderName" class="text-brand-saffron">भाई फुराराम सरपंच</span>
         </h2>
         <p class="text-base sm:text-lg font-bold text-slate-700" id="heroLeaderTitle">
-          प्रधान एवं सरपंच — ग्राम पंचायत थाला
+          प्रधान एवं सरपंच — ग्राम पंचायत टहला
         </p>
 
         <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0" id="heroLeaderBio">
-          थाला ग्राम पंचायत के समग्र विकास, प्रत्येक ढाणी तक शुद्ध पेयजल, सुदृढ़ सीसी सड़कें, आधुनिक विद्यालय सुविधा, सोलर लाइट और हर किसान-मजदूर साथी के स्वाभिमान हेतु 24 घंटे समर्पित।
+          टहला ग्राम पंचायत के समग्र विकास, प्रत्येक ढाणी तक शुद्ध पेयजल, सुदृढ़ सीसी सड़कें, आधुनिक विद्यालय सुविधा, सोलर लाइट और हर किसान-मजदूर साथी के स्वाभिमान हेतु 24 घंटे समर्पित।
         </p>
 
         <!-- Social Media Direct Links -->
@@ -173,6 +175,9 @@
           </a>
           <a id="linkWa" href="https://wa.me/919876543210" target="_blank" class="w-10 h-10 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center justify-center text-lg transition shadow-sm" title="WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a id="linkEmail" href="mailto:fusramsarpanch@gmail.com" class="w-10 h-10 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-600 border border-amber-200 flex items-center justify-center text-lg transition shadow-sm" title="fusramsarpanch@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
           </a>
           <a id="linkTw" href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-600 border border-sky-200 flex items-center justify-center text-lg transition shadow-sm" title="Twitter / X">
             <i class="fa-brands fa-x-twitter"></i>
@@ -192,12 +197,13 @@
         </div>
       </div>
 
+      <!-- Right Leader Card with Exact Photo Framing & Heart Badge -->
       <div class="lg:col-span-5 flex justify-center">
         <div class="relative w-full max-w-sm">
           <div class="relative bg-white rounded-3xl p-3 shadow-2xl border-4 border-amber-200 overflow-hidden group">
             
             <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 relative">
-              <img id="mainLeaderPhoto" src="" alt="भाई फुराराम सरपंच" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'%3E%3Cdefs%3E%3ClinearGradient id=\'bgGrad\' x1=\'0%25\' y1=\'0%25\' x2=\'100%25\' y2=\'100%25\'%3E%3Cstop offset=\'0%25\' stop-color=\'%23FF9933\'/%3E%3Cstop offset=\'100%25\' stop-color=\'%23FF6B00\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=\'400\' height=\'500\' fill=\'url(%23bgGrad)\'/%3E%3Ccircle cx=\'200\' cy=\'190\' r=\'85\' fill=\'%23FFFFFF\' opacity=\'0.9\'/%3E%3Cpath d=\'M100,450 C100,340 150,300 200,300 C250,300 300,340 300,450 Z\' fill=\'%23FFFFFF\' opacity=\'0.95\'/%3E%3Ctext x=\'200\' y=\'470\' font-size=\'22\' font-weight=\'bold\' fill=\'%230B132B\' text-anchor=\'middle\' font-family=\'sans-serif\'%3E%E0%A4%AD%E0%A4%BE%E0%A4%88%20%E0%A4%AB%E0%A4%B0%E0%A4%BE%E0%A4%B0%E0%A4%BE%E0%A4%AE%20%E0%A4%B8%E0%A4%B0%E0%A4%AA%E0%A4%82%E0%A4%9A%3C/text%3E%3C/svg%3E';" />
+              <img id="mainLeaderPhoto" src="" alt="भाई फुराराम सरपंच" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" onerror="this.src=window.DEFAULT_SARPANCH_PHOTO;" />
               
               <!-- Bottom Heart Badge (Strictly matching user photo) -->
               <div class="absolute bottom-3 inset-x-3 bg-white/95 backdrop-blur-md rounded-2xl py-2 px-4 text-center shadow-lg border border-slate-100 flex items-center justify-center gap-2">
@@ -207,7 +213,7 @@
             </div>
 
             <div class="mt-2.5 text-center">
-              <span class="text-xs font-bold text-slate-700 block">ग्राम पंचायत थाला • जनसेवा ही संकल्प</span>
+              <span class="text-xs font-bold text-slate-700 block">ग्राम पंचायत टहला • जनसेवा ही संकल्प</span>
             </div>
           </div>
         </div>
@@ -221,7 +227,7 @@
         <i class="fa-solid fa-bullhorn"></i> ताज़ा सूचनाएं
       </span>
       <div class="overflow-x-auto whitespace-nowrap text-xs text-slate-300 flex items-center gap-8 scrollbar-none" id="newsTicker">
-        <span>थाला ग्राम पंचायत की ताज़ा विकास योजनाओं और सूचनाओं का सीधा प्रसारण लोड हो रहा है...</span>
+        <span>टहला ग्राम पंचायत की ताज़ा विकास योजनाओं और सूचनाओं का सीधा प्रसारण लोड हो रहा है...</span>
       </div>
     </div>
   </div>
@@ -234,7 +240,7 @@
         <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">गाँव और जनसेवा</span>
         <h3 class="text-2xl font-extrabold text-slate-900">भाई फुराराम सरपंच का जन-संकल्प</h3>
         <p class="text-slate-600 text-sm leading-relaxed" id="aboutLongBio">
-          थाला ग्राम पंचायत के प्रत्येक नागरिक को समर्पित यह मंच सीधा संवाद और पारदर्शी शासन सुनिश्चित करने हेतु बनाया गया है। कृषि सशक्तिकरण, ढाणियों में पक्की सड़क, पेयजल टंकी परियोजनाएं और युवाओं हेतु खेल मैदान व शिक्षण संस्थान की सुविधाओं को प्राथमिकता के साथ धरातल पर उतारा जा रहा है।
+          टहला ग्राम पंचायत के प्रत्येक नागरिक को समर्पित यह मंच सीधा संवाद और पारदर्शी शासन सुनिश्चित करने हेतु बनाया गया है। कृषि सशक्तिकरण, ढाणियों में पक्की सड़क, पेयजल टंकी परियोजनाएं और युवाओं हेतु खेल मैदान व शिक्षण संस्थान की सुविधाओं को प्राथमिकता के साथ धरातल पर उतारा जा रहा है।
         </p>
       </div>
 
@@ -248,7 +254,7 @@
           <span class="text-[11px] font-semibold text-slate-600">पारदर्शी विकास</span>
         </div>
         <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100">
-          <p class="text-xl sm:text-2xl font-black text-brand-saffron">थाला</p>
+          <p class="text-xl sm:text-2xl font-black text-brand-saffron">टहला</p>
           <span class="text-[11px] font-semibold text-slate-600">समग्र ग्राम उत्थान</span>
         </div>
         <div class="p-3 bg-amber-50 rounded-2xl border border-amber-100">
@@ -262,7 +268,7 @@
     <section id="news" class="space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">थाला ग्राम समाचार</span>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">टहला ग्राम समाचार</span>
           <h3 class="text-2xl font-extrabold text-slate-900">विकास एवं प्रेस विज्ञप्ति</h3>
         </div>
       </div>
@@ -297,16 +303,31 @@
       </div>
     </section>
 
-    <!-- Videos Section -->
     <section id="videos" class="space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">भाषण व सीधे वीडियो</span>
-          <h3 class="text-2xl font-extrabold text-slate-900">वीडियो गैलरी</h3>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">भाषण, रील व वीडियो</span>
+          <h3 class="text-2xl font-extrabold text-slate-900">वीडियो गैलरी (YouTube, Instagram, Facebook व अपलोड)</h3>
         </div>
       </div>
       <div id="videosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Dynamically rendered videos -->
+        <!-- Dynamically rendered videos with HTML5 video / embeds -->
+      </div>
+    </section>
+
+    <section id="songs" class="space-y-6 bg-gradient-to-br from-amber-500/10 via-white to-slate-100 rounded-3xl p-6 sm:p-8 border border-amber-200">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">जन-जागृति एवं प्रचार</span>
+          <h3 class="text-2xl font-extrabold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-music text-amber-500"></i>
+            <span>अभियान गीत व महत्वपूर्ण ऑडियो संदेश</span>
+          </h3>
+          <p class="text-xs text-slate-600 mt-1">टहला विकास गीत, प्रेरक ग्रामीण धुनें और सरपंच साहब के ऑडियो संदेश सुनें:</p>
+        </div>
+      </div>
+      <div id="songsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Dynamically rendered songs -->
       </div>
     </section>
 
@@ -314,7 +335,7 @@
     <section id="achievements" class="space-y-6">
       <div>
         <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">विकास रिपोर्ट कार्ड</span>
-        <h3 class="text-2xl font-extrabold text-slate-900">थाला ग्राम पंचायत के प्रमुख कार्य</h3>
+        <h3 class="text-2xl font-extrabold text-slate-900">टहला ग्राम पंचायत के प्रमुख कार्य</h3>
       </div>
       <div id="achievementsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <!-- Dynamically rendered achievements -->
@@ -326,15 +347,15 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div class="space-y-4">
           <span class="text-brand-saffron font-bold text-xs uppercase tracking-widest">सम्पर्क कार्यालय</span>
-          <h3 class="text-2xl sm:text-3xl font-extrabold">सरपंच कार्यालय, थाला</h3>
+          <h3 class="text-2xl sm:text-3xl font-extrabold">सरपंच कार्यालय, टहला</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            गाँव की किसी भी समस्या, सुझाव या विकास कार्य के लिए सीधे सम्पर्क करें। आपका हर सुझाव थाला को अग्रणी बनाने में बहुमूल्य है।
+            गाँव की किसी भी समस्या, सुझाव या विकास कार्य के लिए सीधे सम्पर्क करें। आपका हर सुझाव टहला को अग्रणी बनाने में बहुमूल्य है।
           </p>
 
           <div class="space-y-3 pt-2 text-xs sm:text-sm">
             <div class="flex items-center gap-3 text-slate-200">
               <i class="fa-solid fa-location-dot text-brand-saffron text-base w-5"></i>
-              <span>ग्राम पंचायत भवन थाला, मुख्य बस स्टैंड के पास</span>
+              <span>ग्राम पंचायत भवन टहला, मुख्य बस स्टैंड के पास</span>
             </div>
             <div class="flex items-center gap-3 text-slate-200">
               <i class="fa-solid fa-phone text-brand-saffron text-base w-5"></i>
@@ -342,7 +363,7 @@
             </div>
             <div class="flex items-center gap-3 text-slate-200">
               <i class="fa-solid fa-envelope text-brand-saffron text-base w-5"></i>
-              <span>sarpanch.thala@gmail.com</span>
+              <a href="mailto:fusramsarpanch@gmail.com" class="hover:text-amber-300 transition underline">fusramsarpanch@gmail.com</a>
             </div>
           </div>
         </div>
@@ -375,7 +396,10 @@
 
   <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
-      <p class="font-bold text-slate-200">भाई फुराराम सरपंच — ग्राम पंचायत थाला</p>
+      <p class="font-bold text-slate-200">भाई फुराराम सरपंच — ग्राम पंचायत टहला</p>
+      <p class="text-slate-400 text-xs">
+        सम्पर्क: <a href="mailto:fusramsarpanch@gmail.com" class="text-brand-saffron hover:underline">fusramsarpanch@gmail.com</a>
+      </p>
       <p class="text-slate-500 text-[11px]">समस्त अधिकार सुरक्षित • जनसेवा एवं ग्राम उत्थान मंच</p>
     </div>
   </footer>
@@ -387,7 +411,7 @@
       <div class="bg-slate-900 text-white p-3.5 flex items-center justify-between shrink-0">
         <div class="flex items-center gap-2.5">
           <div class="w-8 h-8 rounded-full bg-brand-saffron flex items-center justify-center text-white font-bold text-xs shadow-inner">
-            थाला
+            टहला
           </div>
           <div>
             <h4 class="text-xs font-bold leading-tight">कार्यालय जनसंवाद (Direct Chat)</h4>
@@ -451,7 +475,7 @@
         </div>
         <div>
           <h2 class="text-xs sm:text-sm font-bold flex items-center gap-1.5">
-            <span>थाला मोबाइल सीएमएस</span>
+            <span>टहला मोबाइल सीएमएस</span>
             <span id="currentRoleBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] px-2 py-0.5 rounded-full font-bold">
               Super Admin
             </span>
@@ -468,7 +492,7 @@
       </div>
     </header>
 
-    <!-- Sub-Navigation Tabs (Horizontally scrollable for all mobile devices) -->
+    <!-- Sub-Navigation Tabs -->
     <nav id="cmsTabsBar" class="bg-slate-900/70 border-b border-slate-800 px-3 flex items-center gap-1.5 overflow-x-auto scrollbar-none shrink-0 text-xs py-2">
       <!-- Injected dynamically based on role -->
     </nav>
@@ -523,7 +547,6 @@
 
         <!-- Background Wedding/Festive Drapes -->
         <rect width="500" height="625" fill="url(#curtainGrad)"/>
-        <!-- Drape pleats -->
         <path d="M0,0 Q120,200 80,625 L40,625 Q80,200 0,0 Z" fill="#F3DEAF" opacity="0.35"/>
         <path d="M120,0 Q240,250 200,625 L160,625 Q200,250 120,0 Z" fill="#F3DEAF" opacity="0.28"/>
         <path d="M260,0 Q380,250 360,625 L320,625 Q340,250 260,0 Z" fill="#F3DEAF" opacity="0.32"/>
@@ -565,13 +588,11 @@
 
         <!-- Mustache & Friendly Beard -->
         <path d="M205,245 Q250,238 295,245 Q275,268 250,266 Q225,268 205,245 Z" fill="#171717" />
-        <path d="M226,252 Q250,266 274,252 Q250,260 226,252 Z" fill="#FFFFFF" /> <!-- White Smile Teeth -->
-        <!-- Beard along jawline -->
+        <path d="M226,252 Q250,266 274,252 Q250,260 226,252 Z" fill="#FFFFFF" />
         <path d="M185,225 Q180,285 240,305 Q250,307 260,305 Q320,285 315,225 Q305,290 250,296 Q195,290 185,225 Z" fill="#171717" />
 
         <!-- White Scarf / Dupatta with Green Border -->
         <path d="M125,360 C120,440 135,540 145,625 L210,625 C200,530 180,430 170,360 Z" fill="#FFFFFF" stroke="#E2E8F0"/>
-        <!-- Green Accent Lines on Scarf -->
         <path d="M145,360 L160,625" stroke="#059669" stroke-width="4.5"/>
         <path d="M195,360 L205,625" stroke="#059669" stroke-width="3"/>
 
@@ -598,14 +619,14 @@
 
     // Global application state
     window.isSimulatedOffline = false;
-    const LOCAL_STORAGE_KEY = 'thala_sarpanch_app_state_v3';
+    const LOCAL_STORAGE_KEY = 'tehla_sarpanch_app_state_v4';
 
     window.appState = {
       activeRole: null, // 'SUPER_ADMIN' | 'EDITOR' | null
       activeTab: 'overview',
-      lastUpdated: 1773280000000,
+      lastUpdated: 1773400000000,
       
-      // Passwords
+      // Passwords (strictly confidential)
       passwords: {
         SUPER_ADMIN: "@fusram sarpanch",
         EDITOR: "team edit"
@@ -615,30 +636,32 @@
         name: "भाई फुराराम सरपंच",
         hindiName: "भाई फुराराम सरपंच ❤️",
         designation: "प्रधान एवं सरपंच",
-        constituency: "ग्राम पंचायत थाला (Thala)",
-        bio: "थाला ग्राम पंचायत के समग्र विकास, प्रत्येक ढाणी तक शुद्ध पेयजल, सुदृढ़ सीसी सड़कें, आधुनिक विद्यालय सुविधा, सोलर लाइट और हर किसान-मजदूर साथी के स्वाभिमान हेतु 24 घंटे समर्पित।",
-        longBio: "थाला ग्राम पंचायत के प्रत्येक नागरिक को समर्पित यह मंच सीधा संवाद और पारदर्शी शासन सुनिश्चित करने हेतु बनाया गया है। कृषि सशक्तिकरण, ढाणियों में पक्की सड़क, पेयजल टंकी परियोजनाएं और युवाओं हेतु खेल मैदान व शिक्षण संस्थान की सुविधाओं को प्राथमिकता के साथ धरातल पर उतारा जा रहा है।",
+        constituency: "ग्राम पंचायत टहला (Tehla)",
+        bio: "टहला ग्राम पंचायत के समग्र विकास, प्रत्येक ढाणी तक शुद्ध पेयजल, सुदृढ़ सीसी सड़कें, आधुनिक विद्यालय सुविधा, सोलर लाइट और हर किसान-मजदूर साथी के स्वाभिमान हेतु 24 घंटे समर्पित।",
+        longBio: "टहला ग्राम पंचायत के प्रत्येक नागरिक को समर्पित यह मंच सीधा संवाद और पारदर्शी शासन सुनिश्चित करने हेतु बनाया गया है। कृषि सशक्तिकरण, ढाणियों में पक्की सड़क, पेयजल टंकी परियोजनाएं और युवाओं हेतु खेल मैदान व शिक्षण संस्थान की सुविधाओं को प्राथमिकता के साथ धरातल पर उतारा जा रहा है।",
         photoUrl: window.DEFAULT_SARPANCH_PHOTO,
         instagram: "https://instagram.com",
         facebook: "https://facebook.com",
         youtube: "https://youtube.com",
         twitter: "https://twitter.com",
-        whatsapp: "919876543210"
+        whatsapp: "919876543210",
+        email: "fusramsarpanch@gmail.com"
       },
 
       liveBroadcast: {
         isLive: false,
-        title: "भाई फुराराम सरपंच ग्राम सभा से सीधा लाइव प्रसारण",
+        platform: "YouTube",
+        title: "भाई फुराराम सरपंच ग्राम पंचायत टहला से सीधा लाइव प्रसारण",
         url: "https://youtube.com"
       },
 
       news: [
         {
           id: "n1",
-          title: "थाला में ₹1.25 करोड़ की नई पेयजल पाइपलाइन स्वीकृत",
+          title: "टहला में ₹1.25 करोड़ की नई पेयजल पाइपलाइन स्वीकृत",
           date: "11 Sep 2026",
           category: "विकास कार्य",
-          description: "सरपंच भाई फुराराम जी के विशेष प्रयासों से थाला ग्राम पंचायत की प्रत्येक ढाणी तक स्वच्छ पेयजल पहुंचाने के कार्य का शिलान्यास किया गया।",
+          description: "सरपंच भाई फुराराम जी के विशेष प्रयासों से टहला ग्राम पंचायत की प्रत्येक ढाणी तक स्वच्छ पेयजल पहुंचाने के कार्य का शिलान्यास किया गया।",
           status: "Published"
         },
         {
@@ -646,7 +669,7 @@
           title: "किसानों हेतु विशेष निःशुल्क बीज व उर्वरक वितरण शिविर",
           date: "08 Sep 2026",
           category: "कृषक कल्याण",
-          description: "आगामी रबी सत्र के लिए ग्राम पंचायत प्रांगण में कृषि विशेषज्ञों द्वारा उन्नत तकनीकों व अनुदानित बीजों का वितरण सम्पन्न।",
+          description: "आगामी रबी सत्र के लिए टहला ग्राम पंचायत प्रांगण में कृषि विशेषज्ञों द्वारा उन्नत तकनीकों व अनुदानित बीजों का वितरण सम्पन्न।",
           status: "Published"
         }
       ],
@@ -657,15 +680,15 @@
           title: "विशेष ग्राम सभा एवं जनसुनवाई बैठक",
           date: "14 Sep 2026",
           time: "प्रातः 10:00 बजे",
-          location: "ग्राम पंचायत भवन थाला",
-          description: "समस्त ग्रामवासियों से निवेदन है कि अपने वार्ड की समस्याओं एवं नवीन प्रस्तावों हेतु सपरिवार पधारें।"
+          location: "ग्राम पंचायत भवन टहला",
+          description: "समस्त टहला ग्रामवासियों से निवेदन है कि अपने वार्ड की समस्याओं एवं नवीन प्रस्तावों हेतु सपरिवार पधारें।"
         },
         {
           id: "e2",
-          title: "थाला ग्रामीण युवा खेलकूद व स्वास्थ्य शिविर",
+          title: "टहला ग्रामीण युवा खेलकूद व स्वास्थ्य शिविर",
           date: "18 Sep 2026",
           time: "दोपहर 02:00 बजे",
-          location: "राजकीय उच्च माध्यमिक विद्यालय खेल मैदान",
+          location: "राजकीय उच्च माध्यमिक विद्यालय खेल मैदान, टहला",
           description: "युवाओं हेतु खेल सामग्री वितरण व निःशुल्क नेत्र एवं स्वास्थ्य जांच शिविर।"
         }
       ],
@@ -674,7 +697,7 @@
         {
           id: "p1",
           album: "विकास कार्य",
-          title: "थाला मुख्य मार्ग सीसी सड़क निर्माण निरीक्षण",
+          title: "टहला मुख्य मार्ग सीसी सड़क निर्माण निरीक्षण",
           url: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=600&auto=format&fit=crop&q=80",
           date: "09 Sep 2026"
         },
@@ -690,9 +713,22 @@
       videos: [
         {
           id: "v1",
-          title: "थाला ग्राम विकास एवं आगामी 5 वर्षों का विजन भाषण",
-          url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          title: "टहला ग्राम विकास एवं आगामी 5 वर्षों का विजन भाषण",
+          platform: "YouTube",
+          url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          isLocal: false,
           date: "05 Sep 2026"
+        }
+      ],
+
+      songs: [
+        {
+          id: "s1",
+          title: "टहला विकास गान (गाँव की धड़कन)",
+          artist: "ग्रामीण युवा मंडल टहला",
+          audioUrl: "https://actions.google.com/sounds/v1/ambiences/outdoor_festival.ogg",
+          date: "10 Sep 2026"
         }
       ],
 
@@ -700,7 +736,7 @@
         {
           id: "a1",
           title: "100% शुद्ध पेयजल ढाणी विस्तार",
-          desc: "थाला के प्रत्येक घर तक नल कनेक्शन एवं सोलर ट्यूबवेल व्यवस्था।"
+          desc: "टहला के प्रत्येक घर तक नल कनेक्शन एवं सोलर ट्यूबवेल व्यवस्था।"
         },
         {
           id: "a2",
@@ -710,14 +746,14 @@
         {
           id: "a3",
           title: "200+ सोलर स्ट्रीट लाइट्स",
-          desc: "थाला के समस्त चौराहों और सार्वजनिक स्थलों पर रोशन रोशनी।"
+          desc: "टहला के समस्त चौराहों और सार्वजनिक स्थलों पर रोशन रोशनी।"
         }
       ],
 
       prPosts: [
         {
           id: "pr1",
-          title: "थाला विकास कार्य प्रेस विज्ञप्ति",
+          title: "टहला विकास कार्य प्रेस विज्ञप्ति",
           channels: ["YouTube", "Facebook", "Instagram"],
           status: "Published",
           date: "10 Sep 2026",
@@ -730,7 +766,7 @@
           id: "vis-1",
           name: "रामेश्वर जी चौधरी",
           phone: "9829012345",
-          ward: "वार्ड नं. 3, थाला",
+          ward: "वार्ड नं. 3, टहला",
           category: "किसान",
           message: "नल का दबाव कम है, कृपया निरीक्षण करवाएं।",
           timestamp: "11 Sep 2026, 09:15 AM",
@@ -743,7 +779,7 @@
           id: "c1",
           sender: "office",
           senderName: "कार्यालय भाई फुराराम सरपंच",
-          text: "राम-राम सा! भाई फुराराम सरपंच कार्यालय थाला में आपका स्वागत है। अपनी समस्या अथवा सुझाव साझा करें।",
+          text: "राम-राम सा! भाई फुराराम सरपंच कार्यालय टहला में आपका स्वागत है। अपनी समस्या अथवा सुझाव साझा करें।",
           time: "10:00 AM",
           attachment: null
         }
@@ -752,13 +788,12 @@
       activeChatAttachment: null
     };
 
-    // 1. Safe localStorage Engine
     function saveToLocalStorage(state) {
       try {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
         return true;
       } catch (e) {
-        console.warn("LocalStorage save exception (handled):", e);
+        console.warn("LocalStorage save exception:", e);
         return false;
       }
     }
@@ -768,14 +803,13 @@
         const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (raw) return JSON.parse(raw);
       } catch (e) {
-        console.warn("LocalStorage read exception (handled):", e);
+        console.warn("LocalStorage read exception:", e);
       }
       return null;
     }
 
-    // 2. IndexedDB Storage Engine (unlimited local capacity)
-    const DB_NAME = 'ThalaSarpanchDB_v3';
-    const DB_VERSION = 2;
+    const DB_NAME = 'TehlaSarpanchDB_v4';
+    const DB_VERSION = 3;
     const STORE_NAME = 'app_state';
 
     function openIndexedDB() {
@@ -824,11 +858,10 @@
         const store = tx.objectStore(STORE_NAME);
         store.put(stateData, 'root_state');
       } catch (e) {
-        console.warn("IndexedDB write error (handled):", e);
+        console.warn("IndexedDB write error:", e);
       }
     }
 
-    // Toggle Simulated Offline Mode
     window.toggleSimulatedOfflineMode = function() {
       window.isSimulatedOffline = !window.isSimulatedOffline;
       const toggleBtn = document.getElementById('offlineModeToggleBtn');
@@ -848,13 +881,11 @@
 
     let firestoreDb = null;
     let authObj = null;
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'thala-fusram-sarpanch';
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'tehla-fusram-sarpanch';
 
     function applyStateDelta(data) {
       if (!data) return;
-      // Timestamp resolution: prevent older cloud/offline data from overwriting newer local edits
       if (data.lastUpdated && window.appState.lastUpdated && data.lastUpdated < window.appState.lastUpdated) {
-        console.log("Local state is newer than incoming state. Preserving local edits.");
         return;
       }
       if (data.lastUpdated) window.appState.lastUpdated = data.lastUpdated;
@@ -872,6 +903,7 @@
       if (data.events && Array.isArray(data.events)) window.appState.events = data.events;
       if (data.photos && Array.isArray(data.photos)) window.appState.photos = data.photos;
       if (data.videos && Array.isArray(data.videos)) window.appState.videos = data.videos;
+      if (data.songs && Array.isArray(data.songs)) window.appState.songs = data.songs;
       if (data.visitors && Array.isArray(data.visitors)) window.appState.visitors = data.visitors;
       if (data.chatMessages && Array.isArray(data.chatMessages)) window.appState.chatMessages = data.chatMessages;
       if (data.liveBroadcast) window.appState.liveBroadcast = { ...window.appState.liveBroadcast, ...data.liveBroadcast };
@@ -881,17 +913,13 @@
     async function initPersistentData() {
       // Step 1: Instant load from localStorage
       const localLS = loadFromLocalStorage();
-      if (localLS) {
-        applyStateDelta(localLS);
-      }
+      if (localLS) applyStateDelta(localLS);
 
-      // Step 2: Load from IndexedDB (may have higher capacity/photos)
+      // Step 2: Load from IndexedDB
       const localIDB = await loadFromIndexedDB();
-      if (localIDB) {
-        applyStateDelta(localIDB);
-      }
+      if (localIDB) applyStateDelta(localIDB);
 
-      // Initial render immediately so user never waits
+      // Render immediately
       window.renderPublicSite();
       window.renderChatMessages();
       updateSyncBadge('डेटाबेस सुरक्षित (लोकल + ऑफलाइन)');
@@ -928,12 +956,11 @@
                   }
                   updateSyncBadge('क्लाउड व लोकल सिंक सक्रिय');
                 } else if (window.appState.lastUpdated > (cloudData.lastUpdated || 0)) {
-                  // Local is newer, push to cloud
                   window.saveStateAcrossSession();
                 }
               }
             }, (err) => {
-              console.warn("Firestore snapshot notice:", err);
+              console.warn("Firestore listener notice:", err);
               updateSyncBadge('ऑफलाइन डेटाबेस सुरक्षित');
             });
           }
@@ -953,7 +980,6 @@
       const badge = document.getElementById('syncStatusBadge');
       const icon = document.getElementById('syncStatusIcon');
       const text = document.getElementById('syncStatusText');
-      
       const isActuallyOffline = window.isSimulatedOffline || !navigator.onLine;
 
       if (isActuallyOffline) {
@@ -977,7 +1003,7 @@
 
     window.addEventListener('offline', () => {
       updateNetworkStatus();
-      window.showToast('ऑफलाइन मोड: सारा डेटा डिवाइस के अंदर 100% सुरक्षित है!', 'error');
+      window.showToast('ऑफलाइन मोड: सारा डेटा डिवाइस में 100% सुरक्षित है!', 'error');
     });
 
     window.saveStateAcrossSession = async function() {
@@ -989,6 +1015,7 @@
         events: window.appState.events,
         photos: window.appState.photos,
         videos: window.appState.videos,
+        songs: window.appState.songs,
         visitors: window.appState.visitors,
         chatMessages: window.appState.chatMessages,
         liveBroadcast: window.appState.liveBroadcast,
@@ -996,13 +1023,9 @@
         lastUpdated: window.appState.lastUpdated
       };
 
-      // 1. Save to localStorage instantly
       saveToLocalStorage(payload);
-
-      // 2. Save to IndexedDB (asynchronous unlimited capacity)
       await saveToIndexedDB(payload);
 
-      // 3. Save to Firestore if online and authenticated
       const isActuallyOffline = window.isSimulatedOffline || !navigator.onLine;
       if (!isActuallyOffline && firestoreDb && authObj && authObj.currentUser) {
         try {
@@ -1017,37 +1040,51 @@
       return true;
     };
 
-    // Export / Import Backup Helpers
-    window.exportDataBackup = function() {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.appState, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `Thala_Sarpanch_Backup_${new Date().toISOString().slice(0,10)}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-      window.showToast('डेटा बैकअप फ़ाइल डाउनलोड हो गई!');
-    };
+    // Video URL parser for YouTube, Instagram, Facebook
+    window.parseVideoInput = function(urlStr) {
+      if (!urlStr) return { platform: 'Unknown', embedUrl: '', originalUrl: '' };
+      const str = urlStr.trim();
 
-    window.importDataBackup = function(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = async function(e) {
-        try {
-          const parsed = JSON.parse(e.target.result);
-          applyStateDelta(parsed);
-          await window.saveStateAcrossSession();
-          window.renderPublicSite();
-          if (window.appState.activeRole) {
-            window.switchAdminTab(window.appState.activeTab);
-          }
-          window.showToast('बैकअप सफलतापूर्वक रीस्टोर हो गया!');
-        } catch (err) {
-          window.showToast('अमान्य बैकअप फ़ाइल!', 'error');
+      // YouTube Watch or Short
+      if (str.includes('youtube.com') || str.includes('youtu.be')) {
+        let vidId = '';
+        if (str.includes('youtu.be/')) {
+          vidId = str.split('youtu.be/')[1].split('?')[0].split('&')[0];
+        } else if (str.includes('/shorts/')) {
+          vidId = str.split('/shorts/')[1].split('?')[0].split('&')[0];
+        } else if (str.includes('v=')) {
+          vidId = str.split('v=')[1].split('&')[0];
+        } else if (str.includes('/embed/')) {
+          vidId = str.split('/embed/')[1].split('?')[0];
         }
-      };
-      reader.readAsText(file);
+        return {
+          platform: 'YouTube',
+          embedUrl: vidId ? `https://www.youtube.com/embed/${vidId}` : str,
+          originalUrl: str
+        };
+      }
+
+      // Instagram Reels or Posts
+      if (str.includes('instagram.com')) {
+        let clean = str.split('?')[0];
+        if (!clean.endsWith('/')) clean += '/';
+        return {
+          platform: 'Instagram',
+          embedUrl: `${clean}embed`,
+          originalUrl: str
+        };
+      }
+
+      // Facebook Videos
+      if (str.includes('facebook.com') || str.includes('fb.watch')) {
+        return {
+          platform: 'Facebook',
+          embedUrl: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(str)}&show_text=false&width=500`,
+          originalUrl: str
+        };
+      }
+
+      return { platform: 'Web Link', embedUrl: str, originalUrl: str };
     };
 
     // Client-side image compressor utility
@@ -1083,7 +1120,6 @@
       });
     };
 
-    // Startup sequence
     window.addEventListener('DOMContentLoaded', () => {
       updateNetworkStatus();
       initPersistentData();
@@ -1125,8 +1161,6 @@
 
     window.renderPublicSite = function() {
       const p = window.appState.profile;
-
-      // Ensure active photo is always valid: custom photo if present, otherwise default
       const activePhoto = (p.photoUrl && p.photoUrl.trim() !== '') ? p.photoUrl : window.DEFAULT_SARPANCH_PHOTO;
 
       // Header & Navigation
@@ -1147,6 +1181,7 @@
       document.getElementById('linkFb').href = p.facebook || '#';
       document.getElementById('linkYt').href = p.youtube || '#';
       document.getElementById('linkWa').href = p.whatsapp ? `https://wa.me/${p.whatsapp.replace(/\D/g, '')}` : '#';
+      document.getElementById('linkEmail').href = `mailto:${p.email || 'fusramsarpanch@gmail.com'}`;
       document.getElementById('linkTw').href = p.twitter || '#';
 
       // Live stream banner
@@ -1154,6 +1189,7 @@
       const liveBanner = document.getElementById('liveStreamBanner');
       if (live && live.isLive) {
         liveBanner.classList.remove('hidden');
+        document.getElementById('liveBannerPlatform').innerText = live.platform || 'YouTube';
         document.getElementById('liveBannerTitle').innerText = live.title;
         document.getElementById('liveBannerLink').href = live.url || '#';
       } else {
@@ -1181,7 +1217,7 @@
             <p class="text-xs text-slate-600 leading-relaxed">${n.description}</p>
           </div>
           <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-medium">ग्राम पंचायत थाला</span>
+            <span class="text-slate-400 font-medium">ग्राम पंचायत टहला</span>
             <button onclick="shareItem('news', '${n.title}')" class="text-brand-saffron hover:text-brand-saffronDark font-bold flex items-center gap-1">
               <i class="fa-solid fa-share-nodes"></i> साझा करें
             </button>
@@ -1218,23 +1254,72 @@
         <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-square shadow-sm border border-slate-200">
           <img src="${p.url}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src=window.DEFAULT_SARPANCH_PHOTO;" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition p-3 flex flex-col justify-end text-white text-xs">
-            <span class="text-[10px] text-amber-300 font-bold">${p.album || 'थाला'}</span>
+            <span class="text-[10px] text-amber-300 font-bold">${p.album || 'टहला'}</span>
             <p class="font-bold text-xs truncate">${p.title}</p>
           </div>
         </div>
       `).join('');
 
-      // Videos Grid
       const videosGrid = document.getElementById('videosGrid');
-      videosGrid.innerHTML = window.appState.videos.map(v => `
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
-          <div class="aspect-video bg-black">
-            <iframe src="${v.url}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+      videosGrid.innerHTML = window.appState.videos.map(v => {
+        let playerHtml = '';
+        if (v.isLocal) {
+          playerHtml = `
+            <video controls class="w-full h-full bg-black rounded-t-2xl" preload="metadata">
+              <source src="${v.url}" type="video/mp4">
+              आपका ब्राउज़र वीडियो सपोर्ट नहीं करता।
+            </video>
+          `;
+        } else {
+          const embedUrl = v.embedUrl || v.url;
+          playerHtml = `
+            <iframe src="${embedUrl}" class="w-full h-full" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          `;
+        }
+
+        return `
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col justify-between">
+            <div class="aspect-video bg-black relative">
+              ${playerHtml}
+            </div>
+            <div class="p-3.5 space-y-1">
+              <div class="flex items-center justify-between text-[10px]">
+                <span class="bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">${v.platform || 'वीडियो'}</span>
+                <span class="text-slate-400">${v.date}</span>
+              </div>
+              <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">${v.title}</h4>
+              <div class="flex items-center justify-between pt-2">
+                <a href="${v.url}" target="_blank" class="text-brand-saffron hover:underline text-[11px] font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> मूल लिंक खोलें
+                </a>
+                <button onclick="shareItem('video', '${v.title}')" class="text-slate-500 hover:text-slate-800 text-[11px] font-bold">
+                  <i class="fa-solid fa-share-nodes"></i>
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="p-3.5">
-            <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">${v.title}</h4>
-            <span class="text-[10px] text-slate-400 mt-1 block">${v.date}</span>
+        `;
+      }).join('');
+
+      const songsGrid = document.getElementById('songsGrid');
+      songsGrid.innerHTML = window.appState.songs.map(s => `
+        <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-xs">
+                <i class="fa-solid fa-music"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-xs sm:text-sm">${s.title}</h4>
+                <p class="text-[10px] text-slate-500">${s.artist || 'अभियान धुन'} • ${s.date || ''}</p>
+              </div>
+            </div>
+            <span class="text-[10px] bg-amber-100 text-amber-900 font-bold px-1.5 py-0.5 rounded">ऑडियो</span>
           </div>
+          <audio controls class="w-full mt-2 h-9">
+            <source src="${s.audioUrl}">
+            ऑडियो समर्थित नहीं है।
+          </audio>
         </div>
       `).join('');
 
@@ -1278,13 +1363,18 @@
       container.innerHTML = window.appState.chatMessages.map(m => {
         const isOffice = m.sender === 'office';
         return `
-          <div class="flex flex-col ${isOffice ? 'items-start' : 'items-end'}">
-            <div class="max-w-[85%] rounded-2xl p-2.5 shadow-sm text-xs ${
+          <div class="flex flex-col ${isOffice ? 'items-start' : 'items-end'} group">
+            <div class="max-w-[85%] rounded-2xl p-2.5 shadow-sm text-xs relative ${
               isOffice 
                 ? 'bg-white text-slate-800 border border-slate-200 rounded-tl-none' 
                 : 'bg-brand-saffron text-white rounded-tr-none'
             }">
-              <span class="text-[10px] font-bold block opacity-75 mb-0.5">${m.senderName || (isOffice ? 'सरपंच कार्यालय' : 'आप')}</span>
+              <div class="flex items-center justify-between gap-2 mb-0.5">
+                <span class="text-[10px] font-bold opacity-75">${m.senderName || (isOffice ? 'सरपंच कार्यालय' : 'आप')}</span>
+                <button type="button" onclick="deleteChatMessage('${m.id}')" class="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition text-[10px]" title="मैसेज हटाएं">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
               <p class="leading-relaxed">${m.text}</p>
               ${m.attachment ? renderMessageAttachment(m.attachment) : ''}
               <span class="text-[9px] block text-right mt-1 opacity-70">${m.time}</span>
@@ -1293,6 +1383,36 @@
         `;
       }).join('');
       container.scrollTop = container.scrollHeight;
+    };
+
+    window.deleteChatMessage = async function(id) {
+      window.appState.chatMessages = window.appState.chatMessages.filter(m => m.id !== id);
+      await window.saveStateAcrossSession();
+      renderChatMessages();
+      if (window.appState.activeRole && window.appState.activeTab === 'chatdesk') {
+        const desk = document.getElementById('adminChatStream');
+        if (desk) renderAdminChatDesk(document.getElementById('cmsContentArea'));
+      }
+      showToast('मैसेज हटा दिया गया');
+    };
+
+    window.clearAllChatMessages = async function() {
+      window.appState.chatMessages = [
+        {
+          id: 'c1',
+          sender: "office",
+          senderName: "कार्यालय भाई फुराराम सरपंच",
+          text: "राम-राम सा! नया जनसंवाद सत्र प्रारंभ। अपनी समस्या अथवा सुझाव साझा करें।",
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          attachment: null
+        }
+      ];
+      await window.saveStateAcrossSession();
+      renderChatMessages();
+      if (window.appState.activeRole && window.appState.activeTab === 'chatdesk') {
+        renderAdminChatDesk(document.getElementById('cmsContentArea'));
+      }
+      showToast('चैट इतिहास साफ कर दिया गया');
     };
 
     function renderMessageAttachment(att) {
@@ -1340,7 +1460,6 @@
       const file = e.target.files[0];
       if (!file) return;
 
-      // Automatically compress image before sending
       const compressed = await window.compressImageFile(file, 640, 0.65);
       window.appState.activeChatAttachment = {
         type: 'image',
@@ -1358,7 +1477,7 @@
               type: 'location',
               lat: pos.coords.latitude,
               lng: pos.coords.longitude,
-              name: `थाला लोकेशन (${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)})`
+              name: `टहला लोकेशन (${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)})`
             };
             document.getElementById('chatAttachmentText').innerText = "📍 वर्तमान लोकेशन संलग्न";
             document.getElementById('chatAttachmentPreview').classList.remove('hidden');
@@ -1378,7 +1497,6 @@
       document.getElementById('chatFileInput').value = '';
     };
 
-    // Public Contact Form Submission
     window.handlePublicContactSubmit = async function(e) {
       e.preventDefault();
       const name = document.getElementById('contactNameInput').value.trim();
@@ -1411,11 +1529,10 @@
       showToast('आपका संदेश भाई फुराराम सरपंच कार्यालय को प्राप्त हुआ!');
     };
 
-    // Citizen Registration Modal
     window.openCitizenRegisterModal = function() {
-      window.openModal("नागरिक परिवार पंजीयन — ग्राम पंचायत थाला", `
+      window.openModal("नागरिक परिवार पंजीयन — ग्राम पंचायत टहला", `
         <form onsubmit="handleCitizenRegistrationSubmit(event)" class="space-y-3 text-xs">
-          <p class="text-slate-500 font-medium">थाला ग्राम पंचायत के विकास, योजनाओं और आयोजनों की सीधी सूचना पाने हेतु विवरण भरें:</p>
+          <p class="text-slate-500 font-medium">टहला ग्राम पंचायत के विकास, योजनाओं और आयोजनों की सीधी सूचना पाने हेतु विवरण भरें:</p>
           <div>
             <label class="block font-bold text-slate-700 mb-1">पूरा नाम *</label>
             <input type="text" id="regName" required placeholder="जैसे: रमेश कुमार" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-2 focus:ring-brand-saffron" />
@@ -1479,25 +1596,20 @@
 
   <script>
     window.openPortalAuthModal = function() {
+      // Hidden passwords: strictly no credentials displayed to visitors
       window.openModal("स्टाफ व प्रबंधन लॉगिन (Admin & Editor Access)", `
         <form onsubmit="handlePortalAuthentication(event)" class="space-y-4 text-xs">
           <div>
             <label class="block font-bold text-slate-700 mb-1">प्रबंधन अधिकार (Select Access Level) *</label>
             <select id="portalRoleSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-bold text-slate-800">
-              <option value="SUPER_ADMIN">👑 Super Admin (Full Control • Pass: @fusram sarpanch)</option>
-              <option value="EDITOR">✍️ Editor Desk (Photos, News, Events, PR • Pass: team edit)</option>
+              <option value="SUPER_ADMIN">👑 Super Admin (Full Control)</option>
+              <option value="EDITOR">✍️ Editor Desk (Photos, News, Events, Videos, Songs, PR)</option>
             </select>
           </div>
 
           <div>
             <label class="block font-bold text-slate-700 mb-1">सुरक्षा पासवर्ड दर्ज करें (Password) *</label>
             <input type="password" id="portalPassInput" required placeholder="Enter password..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-mono text-slate-900 focus:ring-2 focus:ring-brand-saffron" />
-          </div>
-
-          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 text-[11px] leading-relaxed">
-            <b>अधिकृत पासवर्ड जानकारी:</b><br/>
-            • Super Admin: <code class="font-bold">@fusram sarpanch</code><br/>
-            • Editor Desk: <code class="font-bold">team edit</code>
           </div>
 
           <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
@@ -1555,7 +1667,8 @@
           { id: 'photos', icon: 'fa-camera', label: 'फोटो गैलरी' },
           { id: 'news', icon: 'fa-newspaper', label: 'समाचार' },
           { id: 'events', icon: 'fa-calendar-plus', label: 'कार्यक्रम' },
-          { id: 'videos', icon: 'fa-video', label: 'वीडियो' },
+          { id: 'videos', icon: 'fa-video', label: 'वीडियो व रील' },
+          { id: 'songs', icon: 'fa-music', label: 'अभियान गीत' },
           { id: 'prdesk', icon: 'fa-bullhorn', label: 'PR व सोशल' },
           { id: 'livestream', icon: 'fa-tower-broadcast', label: 'लाइव' }
         ];
@@ -1564,7 +1677,8 @@
           { id: 'photos', icon: 'fa-camera', label: 'फोटो अपलोड' },
           { id: 'news', icon: 'fa-newspaper', label: 'समाचार बनाएं' },
           { id: 'events', icon: 'fa-calendar-plus', label: 'कार्यक्रम' },
-          { id: 'videos', icon: 'fa-video', label: 'वीडियो' },
+          { id: 'videos', icon: 'fa-video', label: 'वीडियो व रील' },
+          { id: 'songs', icon: 'fa-music', label: 'अभियान गीत' },
           { id: 'prdesk', icon: 'fa-bullhorn', label: 'PR व सोशल' }
         ];
       }
@@ -1609,6 +1723,9 @@
         case 'videos':
           renderAdminVideos(content);
           break;
+        case 'songs':
+          renderAdminSongs(content);
+          break;
         case 'prdesk':
           renderAdminPRDesk(content);
           break;
@@ -1636,10 +1753,6 @@
               <button onclick="exportDataBackup()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold px-3 py-1.5 rounded-lg border border-amber-400/30 flex items-center gap-1.5">
                 <i class="fa-solid fa-download"></i> बैकअप डाउनलोड
               </button>
-              <label class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5">
-                <i class="fa-solid fa-upload"></i> रीस्टोर
-                <input type="file" accept=".json" class="hidden" onchange="importDataBackup(event)" />
-              </label>
             </div>
           </div>
 
@@ -1668,11 +1781,17 @@
               <span>त्वरित मोबाइल प्रबंधन गाइड</span>
             </h3>
             <p class="text-xs text-slate-400 leading-relaxed">
-              आप अपने मोबाइल से सीधे फोटो अपलोड, समाचार प्रकाशन और नागरिक संवाद कर सकते हैं। हर बदलाव बिना रीलोड के तुरंत वेबसाइट पर लाइव हो जाता है।
+              आप अपने मोबाइल से सीधे फोटो अपलोड, वीडियो व रील लिंक, अभियान गीत, समाचार प्रकाशन और नागरिक संवाद कर सकते हैं। हर बदलाव बिना रीलोड के तुरंत वेबसाइट पर लाइव हो जाता है।
             </p>
             <div class="flex flex-wrap gap-2 pt-1 text-xs">
               <button onclick="switchAdminTab('photos')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
                 <i class="fa-solid fa-camera text-brand-saffron"></i> फोटो जोड़ें
+              </button>
+              <button onclick="switchAdminTab('videos')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
+                <i class="fa-solid fa-video text-rose-400"></i> वीडियो व रील
+              </button>
+              <button onclick="switchAdminTab('songs')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
+                <i class="fa-solid fa-music text-amber-400"></i> अभियान गीत
               </button>
               <button onclick="switchAdminTab('news')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl flex items-center gap-1.5">
                 <i class="fa-solid fa-newspaper text-emerald-400"></i> नया समाचार
@@ -1724,9 +1843,15 @@
               </div>
             </div>
 
-            <div>
-              <label class="block text-slate-400 mb-1">ग्राम पंचायत क्षेत्र</label>
-              <input type="text" id="profConst" value="${p.constituency}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1">ग्राम पंचायत क्षेत्र</label>
+                <input type="text" id="profConst" value="${p.constituency}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">आधिकारिक ईमेल (Email)</label>
+                <input type="email" id="profEmail" value="${p.email || 'fusramsarpanch@gmail.com'}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
             </div>
 
             <div>
@@ -1791,6 +1916,7 @@
       p.name = document.getElementById('profName').value;
       p.designation = document.getElementById('profDesig').value;
       p.constituency = document.getElementById('profConst').value;
+      p.email = document.getElementById('profEmail').value;
       p.bio = document.getElementById('profBio').value;
       p.instagram = document.getElementById('profInsta').value;
       p.facebook = document.getElementById('profFb').value;
@@ -1832,12 +1958,12 @@
                   "${v.message || 'कोई संदेश नहीं'}"
                 </p>
 
-                <!-- 1-Tap Mobile Direct Calling Actions -->
+                <!-- 1-Tap Direct Calling Actions -->
                 <div class="flex flex-wrap items-center gap-2 pt-1">
                   <a href="tel:${v.phone}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs transition shadow">
                     <i class="fa-solid fa-phone"></i> सीधा कॉल (${v.phone})
                   </a>
-                  <a href="https://wa.me/91${v.phone.replace(/\D/g, '')}?text=राम-राम%20${encodeURIComponent(v.name)}%20जी,%20भाई%20फुराराम%20सरपंच%20कार्यालय%20थाला%20से%20सम्पर्क%20कर%20रहे%20हैं।" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs transition shadow">
+                  <a href="https://wa.me/91${v.phone.replace(/\D/g, '')}?text=राम-राम%20${encodeURIComponent(v.name)}%20जी,%20भाई%20फुराराम%20सरपंच%20कार्यालय%20टहला%20से%20सम्पर्क%20कर%20रहे%20हैं।" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs transition shadow">
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp
                   </a>
                   <button onclick="deleteVisitor('${v.id}')" class="text-rose-400 hover:text-rose-300 p-1.5 ml-auto">
@@ -1866,18 +1992,28 @@
               <i class="fa-solid fa-comments text-amber-400"></i>
               <span>लाइव नागरिक संवाद डेस्क (Admin Staff Chat Desk)</span>
             </h4>
-            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-bold">100% Real Person</span>
+            <div class="flex items-center gap-2">
+              <button onclick="clearAllChatMessages()" class="text-[10px] bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded font-bold transition">
+                <i class="fa-solid fa-broom"></i> चैट साफ करें
+              </button>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-bold">100% Real Person</span>
+            </div>
           </div>
 
           <div id="adminChatStream" class="flex-1 overflow-y-auto p-4 space-y-2.5 text-xs bg-slate-950">
             ${window.appState.chatMessages.map(m => `
-              <div class="flex flex-col ${m.sender === 'office' ? 'items-end' : 'items-start'}">
+              <div class="flex flex-col ${m.sender === 'office' ? 'items-end' : 'items-start'} group">
                 <div class="max-w-[85%] rounded-2xl p-2.5 text-xs ${
                   m.sender === 'office' 
                     ? 'bg-brand-saffron text-white rounded-tr-none' 
                     : 'bg-slate-800 text-slate-200 border border-slate-700 rounded-tl-none'
                 }">
-                  <span class="text-[10px] font-bold block opacity-75">${m.senderName}</span>
+                  <div class="flex items-center justify-between gap-2 mb-0.5">
+                    <span class="text-[10px] font-bold opacity-75">${m.senderName}</span>
+                    <button type="button" onclick="deleteChatMessage('${m.id}')" class="text-white/60 hover:text-white transition text-[10px]" title="मैसेज हटाएं">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </div>
                   <p>${m.text}</p>
                   ${m.attachment ? renderMessageAttachment(m.attachment) : ''}
                   <span class="text-[9px] block text-right opacity-60 mt-1">${m.time}</span>
@@ -1904,19 +2040,21 @@
       const text = input.value.trim();
       if (!text) return;
 
-      window.appState.chatMessages.push({
-        id: 'reply-' + Date.now(),
+      const replyMsg = {
+        id: 'msg-' + Date.now(),
         sender: 'office',
         senderName: 'कार्यालय भाई फुराराम सरपंच',
         text: text,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      });
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        attachment: null
+      };
 
+      window.appState.chatMessages.push(replyMsg);
       input.value = '';
       await window.saveStateAcrossSession();
-      renderAdminChatDesk(document.getElementById('cmsContentArea'));
       renderChatMessages();
-      showToast('उत्तर नागरिक को प्रेषित किया गया');
+      renderAdminChatDesk(document.getElementById('cmsContentArea'));
+      showToast('उत्तर प्रेषित किया गया!');
     };
   </script>
 
@@ -1966,7 +2104,7 @@
       e.preventDefault();
       const file = document.getElementById('photoFileInput').files[0];
       const title = document.getElementById('photoTitle').value;
-      const album = document.getElementById('photoAlbum').value || 'थाला';
+      const album = document.getElementById('photoAlbum').value || 'टहला';
 
       if (!file) return;
 
@@ -1993,7 +2131,6 @@
       showToast('फोटो हटाई गई');
     };
 
-    // News Management
     function renderAdminNews(el) {
       el.innerHTML = `
         <div class="space-y-4 text-xs">
@@ -2057,7 +2194,6 @@
       showToast('समाचार हटाया गया');
     };
 
-    // Events Management
     function renderAdminEvents(el) {
       el.innerHTML = `
         <div class="space-y-4 text-xs">
@@ -2122,31 +2258,65 @@
       showToast('कार्यक्रम हटाया गया');
     };
 
-    // Videos Management
     function renderAdminVideos(el) {
       el.innerHTML = `
         <div class="space-y-4 text-xs">
           <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
             <h4 class="font-bold text-white text-sm flex items-center gap-2">
               <i class="fa-solid fa-video text-red-500"></i>
-              <span>YouTube भाषण या वीडियो लिंक जोड़ें</span>
+              <span>वीडियो व रील जोड़ें (YouTube, Instagram Reel, Facebook या फोन से डायरेक्ट अपलोड)</span>
             </h4>
-            <form onsubmit="handleAddVideo(event)" class="space-y-3">
-              <input type="text" id="vidTitle" required placeholder="वीडियो का शीर्षक *" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
-              <input type="url" id="vidUrl" required placeholder="YouTube Embed URL (जैसे: https://www.youtube.com/embed/...)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
-              <button type="submit" class="bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2.5 rounded-xl shadow transition">
-                वीडियो जोड़ें
+            
+            <form onsubmit="handleAddVideoEnhanced(event)" class="space-y-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input type="text" id="vidTitle" required placeholder="वीडियो का शीर्षक (Title) *" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+                <select id="vidPlatformSelect" onchange="toggleVideoInputMode()" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold">
+                  <option value="YouTube">YouTube Video / Shorts</option>
+                  <option value="Instagram">Instagram Reel / Post</option>
+                  <option value="Facebook">Facebook Video</option>
+                  <option value="LocalUpload">मोबाइल गैलरी से वीडियो अपलोड (Direct Upload)</option>
+                </select>
+              </div>
+
+              <!-- URL Input Mode -->
+              <div id="vidUrlSection">
+                <label class="block text-slate-400 mb-1 text-[11px]">वीडियो या रील लिंक (YouTube Watch/Shorts link, Instagram Reel URL, Facebook Video URL)</label>
+                <input type="url" id="vidUrl" placeholder="जैसे: https://www.youtube.com/watch?v=... या https://instagram.com/reel/..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-mono" />
+              </div>
+
+              <!-- Local Upload Section -->
+              <div id="vidLocalSection" class="hidden p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                <label class="block text-amber-300 font-bold text-[11px]">मोबाइल स्टोरेज से वीडियो फ़ाइल चुनें (.mp4, .webm)</label>
+                <input type="file" id="vidLocalFile" accept="video/mp4,video/webm,video/*" class="text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-brand-saffron file:text-white file:font-bold cursor-pointer" />
+                <p class="text-[10px] text-slate-500">लंबी वीडियो या फोन से शूट किया भाषण सीधे अपलोड करें।</p>
+              </div>
+
+              <button type="submit" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold px-4 py-2.5 rounded-xl shadow transition">
+                वीडियो प्रकाशित करें (Publish Video)
               </button>
             </form>
           </div>
 
           <div class="space-y-2">
+            <h4 class="font-bold text-slate-300 text-xs">मौजूदा वीडियो सूची (${window.appState.videos.length})</h4>
             ${window.appState.videos.map(v => `
-              <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800 flex items-center justify-between">
-                <span class="font-bold text-white text-xs truncate max-w-xs">${v.title}</span>
-                <button onclick="deleteVideo('${v.id}')" class="text-rose-400 hover:text-rose-300 p-1.5">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
+              <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] bg-slate-800 text-amber-300 px-2 py-0.5 rounded font-bold">${v.platform || 'वीडियो'}</span>
+                    <span class="text-[10px] text-slate-400">${v.date}</span>
+                  </div>
+                  <h4 class="font-bold text-white text-xs truncate mt-1">${v.title}</h4>
+                  <p class="text-[10px] text-slate-500 truncate font-mono">${v.url}</p>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button onclick="editVideoPrompt('${v.id}')" class="text-amber-400 hover:text-amber-300 p-1.5" title="शीर्षक बदलें">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button onclick="deleteVideo('${v.id}')" class="text-rose-400 hover:text-rose-300 p-1.5" title="हटाएं">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               </div>
             `).join('')}
           </div>
@@ -2154,19 +2324,89 @@
       `;
     }
 
-    window.handleAddVideo = async function(e) {
+    window.toggleVideoInputMode = function() {
+      const mode = document.getElementById('vidPlatformSelect').value;
+      const urlSec = document.getElementById('vidUrlSection');
+      const localSec = document.getElementById('vidLocalSection');
+      if (mode === 'LocalUpload') {
+        urlSec.classList.add('hidden');
+        localSec.classList.remove('hidden');
+      } else {
+        urlSec.classList.remove('hidden');
+        localSec.classList.add('hidden');
+      }
+    };
+
+    window.handleAddVideoEnhanced = async function(e) {
       e.preventDefault();
-      const v = {
+      const title = document.getElementById('vidTitle').value.trim();
+      const platformMode = document.getElementById('vidPlatformSelect').value;
+
+      if (platformMode === 'LocalUpload') {
+        const file = document.getElementById('vidLocalFile').files[0];
+        if (!file) {
+          showToast('कृपया वीडियो फ़ाइल चुनें!', 'error');
+          return;
+        }
+
+        showToast('वीडियो लोड हो रही है, कृपया प्रतीक्षा करें...');
+        const reader = new FileReader();
+        reader.onload = async function(ev) {
+          const newVid = {
+            id: 'v-' + Date.now(),
+            title: title,
+            platform: 'Phone Upload',
+            url: ev.target.result,
+            embedUrl: ev.target.result,
+            isLocal: true,
+            date: new Date().toLocaleDateString('en-GB')
+          };
+          window.appState.videos.unshift(newVid);
+          await window.saveStateAcrossSession();
+          renderPublicSite();
+          switchAdminTab('videos');
+          showToast('स्थानीय वीडियो सफलतापूर्वक प्रकाशित!');
+        };
+        reader.readAsDataURL(file);
+        return;
+      }
+
+      // Social Links (YouTube / Insta / FB)
+      const rawUrl = document.getElementById('vidUrl').value.trim();
+      if (!rawUrl) {
+        showToast('कृपया मान्य वीडियो लिंक दर्ज करें!', 'error');
+        return;
+      }
+
+      const parsed = window.parseVideoInput(rawUrl);
+      const newVid = {
         id: 'v-' + Date.now(),
-        title: document.getElementById('vidTitle').value,
-        url: document.getElementById('vidUrl').value,
+        title: title,
+        platform: parsed.platform || platformMode,
+        url: parsed.originalUrl,
+        embedUrl: parsed.embedUrl,
+        isLocal: false,
         date: new Date().toLocaleDateString('en-GB')
       };
-      window.appState.videos.unshift(v);
+
+      window.appState.videos.unshift(newVid);
       await window.saveStateAcrossSession();
       renderPublicSite();
       switchAdminTab('videos');
-      showToast('वीडियो जोड़ दिया गया!');
+      showToast('वीडियो सफलतापूर्वक जोड़ दी गई!');
+    };
+
+    window.editVideoPrompt = async function(id) {
+      const v = window.appState.videos.find(x => x.id === id);
+      if (!v) return;
+      const newTitle = prompt('वीडियो का नया शीर्षक लिखें:', v.title);
+      if (newTitle && newTitle.trim()) {
+        v.title = newTitle.trim();
+        await window.saveStateAcrossSession();
+        renderPublicSite();
+        switchAdminTab('videos');
+        showToast('वीडियो शीर्षक अपडेट हो गया!');
+      }
     };
 
     window.deleteVideo = async function(id) {
@@ -2177,7 +2417,104 @@
       showToast('वीडियो हटाया गया');
     };
 
-    // PR Management
+    function renderAdminSongs(el) {
+      el.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <i class="fa-solid fa-music text-amber-400"></i>
+              <span>अभियान गीत / ऑडियो जोड़ें (Song & Audio Speeches)</span>
+            </h4>
+
+            <form onsubmit="handleAddSong(event)" class="space-y-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input type="text" id="songTitle" required placeholder="गीत / ऑडियो का शीर्षक *" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold" />
+                <input type="text" id="songArtist" placeholder="कलाकार / विवरण (जैसे: टहला विकास गीत)" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              </div>
+
+              <div>
+                <label class="block text-slate-400 mb-1">ऑडियो फ़ाइल (.mp3, .ogg, .wav) या डायरेक्ट ऑडियो लिंक</label>
+                <input type="file" id="songLocalFile" accept="audio/*" class="text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-amber-500 file:text-slate-900 file:font-bold cursor-pointer mb-2" />
+                <input type="url" id="songUrlInput" placeholder="या ऑडियो वेब लिंक दर्ज करें (https://...)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white font-mono" />
+              </div>
+
+              <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow transition">
+                गीत प्रकाशित करें
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-bold text-slate-300 text-xs">प्रसारित गीत सूची (${(window.appState.songs || []).length})</h4>
+            ${(window.appState.songs || []).map(s => `
+              <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between gap-3">
+                <div>
+                  <h4 class="font-bold text-white text-xs">${s.title}</h4>
+                  <span class="text-[10px] text-slate-400">${s.artist || 'अभियान गीत'} • ${s.date || ''}</span>
+                </div>
+                <button onclick="deleteSong('${s.id}')" class="text-rose-400 hover:text-rose-300 p-1.5" title="हटाएं">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    window.handleAddSong = async function(e) {
+      e.preventDefault();
+      const title = document.getElementById('songTitle').value.trim();
+      const artist = document.getElementById('songArtist').value.trim() || 'प्रचार गीत';
+      const file = document.getElementById('songLocalFile').files[0];
+      const directUrl = document.getElementById('songUrlInput').value.trim();
+
+      if (!window.appState.songs) window.appState.songs = [];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = async function(ev) {
+          const newSong = {
+            id: 's-' + Date.now(),
+            title: title,
+            artist: artist,
+            audioUrl: ev.target.result,
+            date: new Date().toLocaleDateString('en-GB')
+          };
+          window.appState.songs.unshift(newSong);
+          await window.saveStateAcrossSession();
+          renderPublicSite();
+          switchAdminTab('songs');
+          showToast('गीत सफलतापूर्वक जोड़ दिया गया!');
+        };
+        reader.readAsDataURL(file);
+      } else if (directUrl) {
+        const newSong = {
+          id: 's-' + Date.now(),
+          title: title,
+          artist: artist,
+          audioUrl: directUrl,
+          date: new Date().toLocaleDateString('en-GB')
+        };
+        window.appState.songs.unshift(newSong);
+        await window.saveStateAcrossSession();
+        renderPublicSite();
+        switchAdminTab('songs');
+        showToast('गीत सफलतापूर्वक जोड़ दिया गया!');
+      } else {
+        showToast('कृपया ऑडियो फ़ाइल चुनें या ऑडियो लिंक दर्ज करें!', 'error');
+      }
+    };
+
+    window.deleteSong = async function(id) {
+      window.appState.songs = (window.appState.songs || []).filter(s => s.id !== id);
+      await window.saveStateAcrossSession();
+      renderPublicSite();
+      switchAdminTab('songs');
+      showToast('गीत हटा दिया गया');
+    };
+
+    // PR Management Desk
     function renderAdminPRDesk(el) {
       el.innerHTML = `
         <div class="space-y-4 text-xs">
@@ -2235,37 +2572,46 @@
       showToast('PR पोस्ट सुरक्षित और प्रसारित!');
     };
 
-    // Live Broadcast Control
     function renderAdminLiveStream(el) {
-      const live = window.appState.liveBroadcast;
+      const live = window.appState.liveBroadcast || {};
       el.innerHTML = `
         <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-4 text-xs">
           <h4 class="font-bold text-white text-sm flex items-center gap-2">
-            <i class="fa-solid fa-tower-broadcast text-rose-500"></i>
-            <span>लाइव प्रसारण नियंत्रण (Live Broadcast Control)</span>
+            <i class="fa-solid fa-tower-broadcast text-rose-500 animate-pulse"></i>
+            <span>लाइव प्रसारण प्रारंभ करें (Start Live - YouTube, Facebook, Instagram)</span>
           </h4>
 
           <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 flex items-center justify-between">
             <div>
-              <p class="font-bold text-white text-sm">वर्तमान स्थिति: ${live.isLive ? '🔴 LIVE चालू है' : '⚪ बंद है'}</p>
-              <span class="text-[10px] text-slate-400">सक्रिय होने पर मुख्य वेबसाइट पर लाल लाइव बैनर दिखाई देगा।</span>
+              <p class="font-bold text-white text-sm">
+                वर्तमान स्थिति: ${live.isLive ? '🔴 LIVE चालू है (' + (live.platform || 'YouTube') + ')' : '⚪ बंद है'}
+              </p>
+              <span class="text-[10px] text-slate-400">लाइव चालू करने पर मुख्य वेबसाइट पर लाल पट्टी में लाइव प्रसारण का बैनर दिखेगा।</span>
             </div>
             <button onclick="toggleLiveBroadcastState()" class="px-4 py-2 rounded-xl font-bold text-xs shadow ${live.isLive ? 'bg-rose-600 hover:bg-rose-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'}">
-              ${live.isLive ? 'लाइव बंद करें' : 'लाइव शुरू करें'}
+              ${live.isLive ? 'लाइव बंद करें (Stop Live)' : 'लाइव शुरू करें (Start Live)'}
             </button>
           </div>
 
           <div class="space-y-3 pt-2">
             <div>
-              <label class="block text-slate-400 mb-1">लाइव प्रसारण का शीर्षक</label>
-              <input type="text" id="liveTitleInput" value="${live.title}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              <label class="block text-slate-400 mb-1">लाइव प्लेटफॉर्म चुनें (Live Streaming Platform)</label>
+              <select id="livePlatformSelect" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-bold">
+                <option value="YouTube" ${live.platform === 'YouTube' ? 'selected' : ''}>YouTube Live</option>
+                <option value="Facebook" ${live.platform === 'Facebook' ? 'selected' : ''}>Facebook Live</option>
+                <option value="Instagram" ${live.platform === 'Instagram' ? 'selected' : ''}>Instagram Live</option>
+              </select>
             </div>
             <div>
-              <label class="block text-slate-400 mb-1">YouTube / Facebook लाइव लिंक</label>
-              <input type="url" id="liveUrlInput" value="${live.url}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
+              <label class="block text-slate-400 mb-1">लाइव प्रसारण का शीर्षक (Headline)</label>
+              <input type="text" id="liveTitleInput" value="${live.title || 'भाई फुराराम सरपंच ग्राम पंचायत टहला से सीधा लाइव'}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white" />
             </div>
-            <button onclick="updateLiveStreamMeta()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-xl">
-              शीर्षक व लिंक सहेजें
+            <div>
+              <label class="block text-slate-400 mb-1">लाइव स्ट्रीम वेब लिंक (YouTube / FB / Insta Live URL)</label>
+              <input type="url" id="liveUrlInput" value="${live.url || ''}" placeholder="https://youtube.com/live/... या https://facebook.com/live/..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white font-mono" />
+            </div>
+            <button onclick="updateLiveStreamMeta()" class="bg-brand-saffron hover:bg-brand-saffronDark text-white font-bold px-4 py-2 rounded-xl transition">
+              लाइव विवरण सुरक्षित करें (Save Live Setup)
             </button>
           </div>
         </div>
@@ -2277,15 +2623,16 @@
       await window.saveStateAcrossSession();
       renderPublicSite();
       switchAdminTab('livestream');
-      showToast(window.appState.liveBroadcast.isLive ? '🔴 लाइव प्रसारण सक्रिय कर दिया गया है!' : 'लाइव प्रसारण समाप्त किया गया।');
+      showToast(window.appState.liveBroadcast.isLive ? '🔴 लाइव प्रसारण प्रारंभ कर दिया गया है!' : 'लाइव प्रसारण समाप्त किया गया।');
     };
 
     window.updateLiveStreamMeta = async function() {
+      window.appState.liveBroadcast.platform = document.getElementById('livePlatformSelect').value;
       window.appState.liveBroadcast.title = document.getElementById('liveTitleInput').value;
       window.appState.liveBroadcast.url = document.getElementById('liveUrlInput').value;
       await window.saveStateAcrossSession();
       renderPublicSite();
-      showToast('लाइव प्रसारण विवरण सुरक्षित!');
+      showToast('लाइव विवरण अपडेट हो गया!');
     };
   </script>
 </body>
